@@ -1,0 +1,20 @@
+<html ng-app="finestApp">
+<head>
+	<title></title>
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/maps.js"></script>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body ng-controller="MainController as mainCtrl">
+
+	{{mainCtrl.hello}}
+
+<h1>Finest Things App</h1>
+
+<div id="map-canvas">{{mainCtrl.map()}}</div>
+
+</body>
+</html>

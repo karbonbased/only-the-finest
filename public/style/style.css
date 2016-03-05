@@ -1,0 +1,10 @@
+body {
+	background-color: linen;
+}
+
+#map-canvas {
+	height: 750px; width: 1000px;
+	display: inline-block;
+	margin-top: 5px;
+	border-radius: 15px;
+}

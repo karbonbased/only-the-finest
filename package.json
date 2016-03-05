@@ -1,0 +1,28 @@
+{
+  "name": "only-the-finest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karbonbased/only-the-finest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karbonbased/only-the-finest/issues"
+  },
+  "homepage": "https://github.com/karbonbased/only-the-finest#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "express-session": "^1.13.0",
+    "mongoose": "^4.4.6",
+    "passport": "^0.3.2",
+    "session": "^0.1.0"
+  }
+}
