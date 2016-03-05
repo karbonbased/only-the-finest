@@ -1,8 +1,8 @@
 
 
-
 	// Google Map Settings
 	var initialize = function () {
+	console.log('initialize is working');
 		var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		  zoom: 12,
 		  minZoom: 10,
@@ -14,12 +14,12 @@
 
 		addMarkers(map);
 
-	} // end initialize
+
 
 	// DISPLAY THE MAP
 	google.maps.event.addDomListener(window, 'load', initialize);
 
-
+	} // end initialize
 
 var addMarkers = function(map) {
 
@@ -37,3 +37,4 @@ var addMarkers = function(map) {
 		  };
 		});
 } // end addMarkers
+
