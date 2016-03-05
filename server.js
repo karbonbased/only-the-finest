@@ -8,9 +8,8 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var passport = require('passport');
 var session = require('express-session');
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/visualize';
 
-
-mongoose.connect('mongodb://localhost/finestApp');
 
 
 app.use(express.static('public'));
@@ -35,8 +34,11 @@ app.use(passport.session());
 
 
 
-//LISTENING
+//CONNECTIONS
 /////////////////////////////////
 
-app.listen(port);
-console.log('listening on port 3000')
+mongoose.connect(mongoUri);
+
+app.listen(port, function() {
+console.log('listening on port ' + port)
+});
