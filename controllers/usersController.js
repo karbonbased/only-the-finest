@@ -28,9 +28,11 @@ router.get('/seed', function(req, res){
 });
 
 // NEW SIGNUP //
-router.get('/signup', function(req, res) {
+router.post('/signup', passport.authenticate('local-signup', {
+	failureRedirect: '/'}, console.log("failed to signup")), 
+	function(req, res) {
 	res.send(req.body)
-})
+});
 
 // LOGOUT //
 router.get('/logout', function(req, res){
@@ -38,6 +40,12 @@ router.get('/logout', function(req, res){
 	res.redirect('/')
 })
 
+// LOGIN //
+router.post('/login', passport.authenticate('local-login', {
+	failureRedirect : '/users'}, console.log('failed to login, router.post users/login')), 
+	function(req, res) {
+	res.send(req.body)
+});
 
 
 module.exports = router;
