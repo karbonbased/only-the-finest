@@ -29,9 +29,16 @@ app.controller('MainController', ['$http', function($http){
 	this.getLocations();
 
 	this.addUserForm = function(){
-		//console.log('Formdata: ', this.formdata);
-		$http({ method:'POST', url:'/users', data:this.formdata}).then(function(result){
+		//console.log('Formdata: ', this.userData);
+		$http({ method:'POST', url:'/users', data:this.userData}).then(function(result){
 			controller.getUsers();
+		});
+	};
+
+	this.addLocationForm = function(){
+		console.log('Formdata: ', this.locationData);
+		$http({ method:'POST', url:'/locations', data:this.locationData}).then(function(result){
+			controller.getLocations();
 		});
 	};
 

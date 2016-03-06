@@ -18,11 +18,14 @@ router.get('/json', function(req, res) {
 	});
 });
 
+router.post('/', function(req, res) {
+	Locations.create(req.body, function(err, locations) {
+		res.send(locations);
+	});
+});
+
 // SEED ROUTE FOR USERS
 router.get('/seed', function(req, res){
-
-
-
 var locations = [
 		{name: 'Prospect Park',
 		lat: 40.660301, 
