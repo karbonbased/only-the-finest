@@ -10,7 +10,8 @@ var passport = require('passport');
 var session = require('express-session');
 var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/visualize';
 
-
+// MIDDLEWARE //
+require('./config/passport.js')(passport);
 
 app.use(express.static('public'));
 
@@ -18,7 +19,7 @@ app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 
 
-
+// ROUTES //
 var usersController = require('./controllers/usersController.js');
 app.use('/users', usersController)
 
@@ -36,7 +37,6 @@ app.use(passport.session());
 
 //CONNECTIONS
 /////////////////////////////////
-
 mongoose.connect(mongoUri);
 
 app.listen(port, function() {
