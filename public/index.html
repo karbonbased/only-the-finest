@@ -12,9 +12,34 @@
 
 	{{mainCtrl.hello}}
 
-<h1>Finest Things App</h1>
+	<h1>Finest Things App</h1>
 
-<div id="map-canvas">{{mainCtrl.map()}}</div>
+	<div id="map-canvas">{{mainCtrl.map()}}</div>
+
+	<h3>All Users</h3>
+	<div ng-repeat="user in mainCtrl.userList">
+		<p>{{user.name}}</p>
+		<p ng-if="user.gender=='f'">Female</p>
+		<p ng-if="user.gender=='m'">Male</p>
+		<p>{{user.locations}}</p>
+	</div>
+
+	<h3>All Locations</h3>
+	<div ng-repeat="location in mainCtrl.locationList">
+		<p>{{location.name}}</p>
+	</div>
+
+	<div id="addUserForm">
+		<h3>New User</h3>
+		<form ng-submit="mainCtrl.addUserForm()">
+			<input type="text" ng-model="mainCtrl.formdata.name" placeholder="name"><br>
+			<input type="text" ng-model="mainCtrl.formdata.email" placeholder="email"><br>
+			<input type="text" ng-model="mainCtrl.formdata.gender" placeholder="gender"><br>
+			<input type="text" ng-model="mainCtrl.formdata.password" placeholder="password"><br>
+			<input type="submit">
+		</form>
+	</div>
+
 
 </body>
 </html>

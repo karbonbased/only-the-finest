@@ -4,11 +4,35 @@ var app = angular.module('finestApp', []);
 app.controller('MainController', ['$http', function($http){
 	this.hello = 'i am working';
  
- var controller = this;
-		this.map = function(){
-			console.log('sup fools');
-			controller.maps = initialize();
-			console.log(this)
-		}
+ 	var controller = this;
+		
+	this.map = function(){
+		console.log('sup fools');
+		controller.maps = initialize();
+		console.log(this)
+	}
+
+	this.getUsers = function(){
+		//console.log('Getting Users');
+		$http({ method:'GET', url:'/users'}).then(function(response){
+			controller.userList = response.data;
+		});	
+	}
+	this.getUsers();
+
+	this.getLocations = function(){
+		//console.log('Getting Locations')
+		$http({ method:'GET', url:'/locations'}).then(function(response){
+			controller.locationList = response.data;
+		});
+	}
+	this.getLocations();
+
+	this.addUserForm = function(){
+		//console.log('Formdata: ', this.formdata);
+		$http({ method:'POST', url:'/users', data:this.formdata}).then(function(result){
+			controller.getUsers();
+		});
+	};
 
 }]);

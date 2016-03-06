@@ -7,7 +7,7 @@ var User      = require('../models/user'),
 
 router.get('/', function(req, res) {
 	Locations.find(function(err, locations) {
-		res.send('map stuff goes here')
+		res.send(locations)
 		//res.render('locations/index.ejs', { locations: locations });
 	});
 });
