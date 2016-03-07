@@ -1,5 +1,6 @@
 <html ng-app="finestApp">
 <head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">.
 	<title></title>
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
@@ -9,10 +10,28 @@
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body ng-controller="MainController as mainCtrl">
+<header>
+	<nav class="bar">
+		<a href="#">FINEST LOGO</a>
+		<a href="#">THIS ROUTE</a>
+		<a href="#">LOCATIONS</a>
+		<a ng-click=mainCtrl.logout()>LOGOUT</a>
+	</nav>
+</header>
 
-	{{mainCtrl.hello}}
+
 
 	<h1>Finest Things App</h1>
+
+<div id="main-area"> 
+	<section id="left-main">
+		This is the side where we list users and locations
+	</section>>
+	
+	<section id="right-main">
+		<div id="map-canvas">{{mainCtrl.map()}}</div>
+	</section>
+</div>
 
 	<div id="map-canvas">{{mainCtrl.map()}}</div>
 
@@ -49,6 +68,15 @@
 			<input type="submit">
 		</form>
 	</div>
+
+<!-- WRAP FORMS IN THIS -->
+<div ng-if="!mainCtrl.isLoggedIn">
+<!-- PLACE THESE CONTROLLERS ON FORMS -->
+<div ng-controller="SignupController as signup" ng-submit="signup.singup()">
+	
+</div>
+<div ng-controller="LoginController as login" ng-submit="login.login()"></div>
+</div>
 
 </body>
 </html>
