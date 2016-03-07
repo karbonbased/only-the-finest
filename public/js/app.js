@@ -35,11 +35,30 @@ app.controller('MainController', ['$http', function($http){
 		});
 	};
 
+	/*
+	this.updateUser = function(){
+		$http({ method:'POST', url:'/users', data:currentUser}).then(function(result){
+			controller.getUsers();
+		});
+	};
+	*/
+
 	this.addLocationForm = function(){
 		console.log('Formdata: ', this.locationData);
 		$http({ method:'POST', url:'/locations', data:this.locationData}).then(function(result){
 			controller.getLocations();
 		});
+
+	/*
+		$http({ method:'POST', url:'/locations', data:this.locationData}).then(function(result) {
+			//Make sure add location to current user
+			currentUser.locations.append(result);
+			controller.updateUser();
+		}).then(function(result){
+			controller.getLocations();
+		});
+	*/	
+	
 	};
 
 }]);
