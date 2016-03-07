@@ -25,7 +25,48 @@
 
 <div id="main-area"> 
 	<section id="left-main">
-		This is the side where we list users and locations
+		<div id="left-main-content">
+			<h3>All Users</h3>
+		<div ng-repeat="user in mainCtrl.userList">
+			<p>{{user.name}}</p>
+			<p ng-if="user.gender=='f'">Female</p>
+			<p ng-if="user.gender=='m'">Male</p>
+			<p>{{user.locations}}</p>
+		</div>
+
+		<h3>All Locations</h3>
+		<div ng-repeat="location in mainCtrl.locationList">
+			<p>{{location.name}}</p>
+		</div>
+
+		<div ng-if="!mainCtrl.isLoggedIn" id="addUserForm">
+			<h3>Sign Up</h3>
+			<form ng-controller="SignupController as signup" ng-submit="signup.signup()">
+				<input type="text" ng-model="signup.userInfo.name" placeholder="name"><br>
+				<input type="text" ng-model="signup.userInfo.email" placeholder="email"><br>
+				<input type="text" ng-model="signup.userInfo.gender" placeholder="gender"><br>
+				<input type="text" ng-model="signup.userInfo.password" placeholder="password"><br>
+				<input type="submit">
+			</form>
+
+			<h3>Login</h3>
+			<form ng-controller="LoginController as login" ng-submit="login.login()">
+				<input type="text" ng-model="login.userInfo.email" placeholder="email"><br>
+				<input type="text" ng-model="login.userInfo.password" placeholder="password"><br>
+				<input type="submit">
+			</form>
+		</div>
+
+		<div id="addLocationForm">
+			<h3>New Location</h3>
+			<form ng-submit="mainCtrl.addLocationForm()">
+				<input type="text" ng-model="mainCtrl.locationData.name" placeholder="name"><br>
+				<input type="number" step="any" ng-model="mainCtrl.locationData.lat" placeholder="lat"><br>
+				<input type="number" step="any" ng-model="mainCtrl.locationData.lng" placeholder="lng"><br>
+				<input type="submit">
+			</form>
+		</div>
+	</div>
 	</section>>
 	
 	<section id="right-main">
@@ -33,56 +74,8 @@
 	</section>
 </div>
 
-	<div id="map-canvas">{{mainCtrl.map()}}</div>
 
-	<h3>All Users</h3>
-	<div ng-repeat="user in mainCtrl.userList">
-		<p>{{user.name}}</p>
-		<p ng-if="user.gender=='f'">Female</p>
-		<p ng-if="user.gender=='m'">Male</p>
-		<p>{{user.locations}}</p>
-	</div>
-
-	<h3>All Locations</h3>
-	<div ng-repeat="location in mainCtrl.locationList">
-		<p>{{location.name}}</p>
-	</div>
-
-	<div ng-if="!mainCtrl.isLoggedIn" id="addUserForm">
-		<h3>Sign Up</h3>
-		<form ng-controller="SignupController as signup" ng-submit="signup.signup()">
-			<input type="text" ng-model="signup.userInfo.name" placeholder="name"><br>
-			<input type="text" ng-model="signup.userInfo.email" placeholder="email"><br>
-			<input type="text" ng-model="signup.userInfo.gender" placeholder="gender"><br>
-			<input type="text" ng-model="signup.userInfo.password" placeholder="password"><br>
-			<input type="submit">
-		</form>
-
-		<h3>Login</h3>
-		<form ng-controller="LoginController as login" ng-submit="login.login()">
-			<input type="text" ng-model="login.userInfo.email" placeholder="email"><br>
-			<input type="text" ng-model="login.userInfo.password" placeholder="password"><br>
-			<input type="submit">
-		</form>
-	</div>
-
-	<div id="addLocationForm">
-		<h3>New Location</h3>
-		<form ng-submit="mainCtrl.addLocationForm()">
-			<input type="text" ng-model="mainCtrl.locationData.name" placeholder="name"><br>
-			<input type="number" step="any" ng-model="mainCtrl.locationData.lat" placeholder="lat"><br>
-			<input type="number" step="any" ng-model="mainCtrl.locationData.lng" placeholder="lng"><br>
-			<input type="submit">
-		</form>
-	</div>
-
-
-<!-- PLACE THESE CONTROLLERS ON FORMS -->
-<div ng-controller="SignupController as signup" ng-submit="signup.singup()">
 	
-</div>
-<div ng-controller="LoginController as login" ng-submit="login.login()"></div>
-</div>
 
 </body>
 </html>
