@@ -1,6 +1,7 @@
 // REQUIREMENTS //
 var express = require('express');
 var router = express.Router();
+var mongoose = require('mongoose');
 var passport = require('passport');
 var User = require('../models/user.js');
 var Locations = require('../models/location.js');
@@ -12,11 +13,11 @@ router.get('/', function(req, res){
 	});
 });
 
-router.post('/', function(req, res) {
-	User.create(req.body, function(err, user) {
-		res.send(user);
-	});
-});
+// router.post('/', function(req, res) {
+// 	User.create(req.body, function(err, user) {
+// 		res.send(user);
+// 	});
+// });
 
 
 // SEED ROUTE FOR USERS
