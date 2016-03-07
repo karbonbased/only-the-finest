@@ -36,7 +36,7 @@ router.get('/seed', function(req, res){
 
 // NEW SIGNUP //
 router.post('/signup', passport.authenticate('local-signup', {
-	failureRedirect: '/'}, console.log("failed to signup")), 
+	failureRedirect: '/'}), 
 	function(req, res) {
 	res.send(req.body)
 });
@@ -49,7 +49,7 @@ router.get('/logout', function(req, res){
 
 // LOGIN //
 router.post('/login', passport.authenticate('local-login', {
-	failureRedirect : '/'}, console.log('failed to login, router.post users/login')), 
+	failureRedirect : '/'}), 
 	function(req, res) {
 	res.send(req.body)
 });
