@@ -1,5 +1,57 @@
+@font-face {
+    font-family: NeutraBold;
+    src: url('../fonts/Neutraface2-Bold.ttf');
+}
+
+@font-face {
+    font-family: NeutraLight;
+    src: url('../fonts/Neutraface2-Light.ttf');
+}
+
+@font-face {
+    font-family: NeutraMedium;
+    src: url('../fonts/Neutraface2-Medium.ttf');
+}
+
+@font-face {
+    font-family: NeutraThin;
+    src: url('../fonts/Neutraface2-Thin.ttf');
+}
+
 body {
-	background-color: linen;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	background-color: rgb(42,42,42);
+	color: white;
+	font-family: NeutraLight, sans-serif;
+}
+
+.bar {
+	margin: 0 auto;
+	display: flex;
+	align-items: baseline;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: nowrap;
+	background-color: black;
+	width: 100%;
+	padding: 20px;
+	border-bottom: 1px solid rgba(255,255,255,0.5);
+	border-top: 1px solid rgba(255,255,255,0.5);
+}
+
+.bar a {
+	text-decoration: none;
+	color: white;
+	display: flex;
+	flex: 1 1 auto;
+	flex-wrap: nowrap;
+	align-items: flex-start;
+	justify-content: space-around;
+	flex-direction: row;
+	text-transform: uppercase;
+	align-self: center;
 }
 
 #map-canvas {

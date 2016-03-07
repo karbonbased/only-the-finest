@@ -10,6 +10,15 @@
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 <body ng-controller="MainController as mainCtrl">
+<header>
+	<nav class="bar">
+		<a href="#">FINEST LOGO</a>
+		<a href="#">THIS ROUTE</a>
+		<a href="#">LOCATIONS</a>
+		<a ng-click=mainCtrl.logout()>LOGOUT</a>
+	</nav>
+</header>
+
 
 	{{mainCtrl.hello}}
 
