@@ -2,7 +2,6 @@
 
 	// Google Map Settings
 	var initialize = function () {
-	console.log('initialize is working');
 		var map = new google.maps.Map(document.getElementById('map-canvas'), {
 		  zoom: 12,
 		  minZoom: 10,

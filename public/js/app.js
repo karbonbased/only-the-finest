@@ -8,9 +8,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 
 // call the map function, set to intialize function is maps.js		
 	this.map = function(){
-		console.log('sup fools');
 		controller.maps = initialize();
-		console.log(this)
 	}
 
 	this.getUsers = function(){
@@ -51,7 +49,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 
 	// SCOPE ON TO LISTEN FOR CHILDREN
 	$scope.$on('UserInfo',  function(eventObj, data) {
-		console.log(data);
+		//console.log(data);
 
 		//save the data to our variables and switch flag
 		controller.user = data;
@@ -86,15 +84,17 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 		email: null,
 		password: null
 	}
-
 	var controller = this;
+	console.log(controller.userInfo)
+
+	
 
 	this.login = function() {
 		console.log("this.login route fired")
 		// get the data from the login route
 		$http({
 			method: "POST",
-			url: ("users/login"),
+			url: ("/users/login"),
 			data: controller.userInfo
 			})
 		// use promise to fix asynchronous issue
@@ -115,6 +115,7 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 
 // SIGNUP CONTROLLER
 app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
+
 	this.userInfo = {
 		name: null,
 		gender: null,
@@ -124,20 +125,23 @@ app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
 
 	var controller = this;
 
+
 	this.signup = function() {
-		console.log("this.signup route fired")
+		console.log(this.userInfo)
 		// get the data from the login route
 		$http({
 			method: "POST",
-			url: ("users/signup"),
+			url: ("/users/signup"),
 			data: controller.userInfo
 			})
 		// use promise to fix asynchronous issue
 		.then(function(results) {
 			console.log("::::::results.data is:::::::")
-			console.log(results.data)
+			// console.log(results)
+		 	console.log(results.data)
 			//send the results to the parent controller
 			$scope.$emit('UserInfo', results.data)
+			// controller.getUsers();
 			},
 			//failure
 			function(err){

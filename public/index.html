@@ -48,13 +48,20 @@
 		<p>{{location.name}}</p>
 	</div>
 
-	<div id="addUserForm">
-		<h3>New User</h3>
-		<form ng-submit="mainCtrl.addUserForm()">
-			<input type="text" ng-model="mainCtrl.userData.name" placeholder="name"><br>
-			<input type="text" ng-model="mainCtrl.userData.email" placeholder="email"><br>
-			<input type="text" ng-model="mainCtrl.userData.gender" placeholder="gender"><br>
-			<input type="text" ng-model="mainCtrl.userData.password" placeholder="password"><br>
+	<div ng-if="!mainCtrl.isLoggedIn" id="addUserForm">
+		<h3>Sign Up</h3>
+		<form ng-controller="SignupController as signup" ng-submit="signup.signup()">
+			<input type="text" ng-model="signup.userInfo.name" placeholder="name"><br>
+			<input type="text" ng-model="signup.userInfo.email" placeholder="email"><br>
+			<input type="text" ng-model="signup.userInfo.gender" placeholder="gender"><br>
+			<input type="text" ng-model="signup.userInfo.password" placeholder="password"><br>
+			<input type="submit">
+		</form>
+
+		<h3>Login</h3>
+		<form ng-controller="LoginController as login" ng-submit="login.login()">
+			<input type="text" ng-model="login.userInfo.email" placeholder="email"><br>
+			<input type="text" ng-model="login.userInfo.password" placeholder="password"><br>
 			<input type="submit">
 		</form>
 	</div>
@@ -69,8 +76,7 @@
 		</form>
 	</div>
 
-<!-- WRAP FORMS IN THIS -->
-<div ng-if="!mainCtrl.isLoggedIn">
+
 <!-- PLACE THESE CONTROLLERS ON FORMS -->
 <div ng-controller="SignupController as signup" ng-submit="signup.singup()">
 	

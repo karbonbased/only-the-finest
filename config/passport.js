@@ -1,6 +1,7 @@
 //var passport = require('passport');
 var User = require('../models/user.js');
 var LocalStrategy   = require('passport-local').Strategy;
+var passport = require('passport');
 
 module.exports = function(passport) {
 console.log("passport file recognized")
