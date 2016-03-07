@@ -12,13 +12,19 @@ router.get('/', function(req, res){
 	});
 });
 
+router.post('/', function(req, res) {
+	User.create(req.body, function(err, user) {
+		res.send(user);
+	});
+});
+
 
 // SEED ROUTE FOR USERS
 router.get('/seed', function(req, res){
 	var users = [
 		{name: 'Jen', email: 'Jen@Jen.com' , gender: 'f', password: 'Jen'},
 		{name: 'Emily', email: 'Emily@Emily.com' , gender: 'f', password: 'Emily'},
-		{name: 'Josh', email: 'Josh@Josh.com' , gender: 'f', password: 'Josh'},
+		{name: 'Josh', email: 'Josh@Josh.com' , gender: 'm', password: 'Josh'},
 	];
 
 	// CREATE THE SEEDED USERS IN DB

@@ -21,10 +21,7 @@
 
 
 
-	{{mainCtrl.hello}}
-
-<h1>Finest Things App</h1>
-
+	<h1>Finest Things App</h1>
 
 <div id="main-area"> 
 	<section id="left-main">
@@ -35,6 +32,42 @@
 		<div id="map-canvas">{{mainCtrl.map()}}</div>
 	</section>
 </div>
+
+	<div id="map-canvas">{{mainCtrl.map()}}</div>
+
+	<h3>All Users</h3>
+	<div ng-repeat="user in mainCtrl.userList">
+		<p>{{user.name}}</p>
+		<p ng-if="user.gender=='f'">Female</p>
+		<p ng-if="user.gender=='m'">Male</p>
+		<p>{{user.locations}}</p>
+	</div>
+
+	<h3>All Locations</h3>
+	<div ng-repeat="location in mainCtrl.locationList">
+		<p>{{location.name}}</p>
+	</div>
+
+	<div id="addUserForm">
+		<h3>New User</h3>
+		<form ng-submit="mainCtrl.addUserForm()">
+			<input type="text" ng-model="mainCtrl.userData.name" placeholder="name"><br>
+			<input type="text" ng-model="mainCtrl.userData.email" placeholder="email"><br>
+			<input type="text" ng-model="mainCtrl.userData.gender" placeholder="gender"><br>
+			<input type="text" ng-model="mainCtrl.userData.password" placeholder="password"><br>
+			<input type="submit">
+		</form>
+	</div>
+
+	<div id="addLocationForm">
+		<h3>New Location</h3>
+		<form ng-submit="mainCtrl.addLocationForm()">
+			<input type="text" ng-model="mainCtrl.locationData.name" placeholder="name"><br>
+			<input type="number" step="any" ng-model="mainCtrl.locationData.lat" placeholder="lat"><br>
+			<input type="number" step="any" ng-model="mainCtrl.locationData.lng" placeholder="lng"><br>
+			<input type="submit">
+		</form>
+	</div>
 
 </body>
 </html>
