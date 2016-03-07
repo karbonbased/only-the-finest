@@ -28,8 +28,12 @@ app.use('/locations', locationsController)
 
 //PASSPORT
 /////////////////////////////////
-app.use(session({ name: 'finestapp', secret: 'conventional wisdom', resave: true,
-    saveUninitialized: true }));
+app.use(session({ 
+	// name: 'finestapp', 
+	secret: 'conventional wisdom', 
+	// resave: true,
+    // saveUninitialized: true 
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 
