@@ -13,11 +13,6 @@ router.get('/', function(req, res){
 	});
 });
 
-// router.post('/', function(req, res) {
-// 	User.create(req.body, function(err, user) {
-// 		res.send(user);
-// 	});
-// });
 
 
 // SEED ROUTE FOR USERS
