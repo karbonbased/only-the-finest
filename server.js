@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var port = process.env.PORT || 3000;
 var passport = require('passport');
 var session = require('express-session');
-var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/visualize';
+var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/finestApp';
 var cookieParser = require('cookie-parser')
 var logger = require('morgan');
 
