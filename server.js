@@ -29,8 +29,8 @@ app.use(cookieParser()); // to resolve "TypeError: Cannot read property 'connect
 app.use(session({ 
 	// name: 'finestapp', 
 	secret: 'conventional wisdom', 
-	// resave: true,
-    // saveUninitialized: true 
+	resave: true,
+    saveUninitialized: true 
 }));
 app.use(passport.initialize());
 app.use(passport.session());
