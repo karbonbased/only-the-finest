@@ -42,7 +42,7 @@ router.get('/logout', function(req, res){
 
 // LOGIN //
 router.post('/login', passport.authenticate('local-login', {
-	failureRedirect : '/users'}, console.log('failed to login, router.post users/login')), 
+	failureRedirect : '/'}, console.log('failed to login, router.post users/login')), 
 	function(req, res) {
 	res.send(req.body)
 });
