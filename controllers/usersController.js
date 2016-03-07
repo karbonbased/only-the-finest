@@ -22,16 +22,46 @@ router.get('/', function(req, res){
 
 // SEED ROUTE FOR USERS
 router.get('/seed', function(req, res){
-	var users = [
-		{name: 'Jen', email: 'Jen@Jen.com' , gender: 'f', password: 'Jen'},
-		{name: 'Emily', email: 'Emily@Emily.com' , gender: 'f', password: 'Emily'},
-		{name: 'Josh', email: 'Josh@Josh.com' , gender: 'm', password: 'Josh'},
-	];
+    var users = [
+        {name: 'Jen', email: 'Jen@Jen.com' , gender: 'f', password: 'Jen', locations: [{name: 'Prospect Park',
+        lat: 40.660301, 
+        lng: -73.968977},
 
+        {name: 'Columbus Circle',
+        lat: 40.768280,
+        lng: -73.982351},
+
+        {name: 'General Assembly',
+        lat: 40.740047,
+        lng: -73.990092}]},
+
+        {name: 'Emily', email: 'Emily@Emily.com' , gender: 'f', password: 'Emily', locations: [{name: 'Prospect Park',
+        lat: 40.660301, 
+        lng: -73.968977},
+
+        {name: 'Columbus Circle',
+        lat: 40.768280,
+        lng: -73.982351},
+
+        {name: 'General Assembly',
+        lat: 40.740047,
+        lng: -73.990092}]},
+        {name: 'Josh', email: 'Josh@Josh.com' , gender: 'f', password: 'Josh', locations: [{name: 'Prospect Park',
+        lat: 40.660301, 
+        lng: -73.968977},
+
+        {name: 'Columbus Circle',
+        lat: 40.768280,
+        lng: -73.982351},
+
+        {name: 'General Assembly',
+        lat: 40.740047,
+        lng: -73.990092}]}
+    ];
 	// CREATE THE SEEDED USERS IN DB
 	User.create(users, function(err, users){
 		res.redirect('/');
-	});
+		});
 });
 
 // NEW SIGNUP //
@@ -45,7 +75,7 @@ router.post('/signup', passport.authenticate('local-signup', {
 router.get('/logout', function(req, res){
 	req.logout();
 	res.redirect('/')
-})
+});
 
 // LOGIN //
 router.post('/login', passport.authenticate('local-login', {
@@ -56,3 +86,4 @@ router.post('/login', passport.authenticate('local-login', {
 
 
 module.exports = router;
+
