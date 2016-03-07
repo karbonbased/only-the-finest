@@ -20,11 +20,21 @@
 </header>
 
 
+
 	{{mainCtrl.hello}}
 
 <h1>Finest Things App</h1>
 
-<div id="map-canvas">{{mainCtrl.map()}}</div>
+
+<div id="main-area"> 
+	<section id="left-main">
+		This is the side where we list users and locations
+	</section>>
+	
+	<section id="right-main">
+		<div id="map-canvas">{{mainCtrl.map()}}</div>
+	</section>
+</div>
 
 </body>
 </html>
