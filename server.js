@@ -1,6 +1,5 @@
 //REQUIREMENTS//
 /////////////////////////////////
-
 var express = require('express');
 var app = express();
 var mongoose = require('mongoose');
@@ -9,22 +8,21 @@ var port = process.env.PORT || 3000;
 var passport = require('passport');
 var session = require('express-session');
 var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/visualize';
+var cookieParser = require('cookie-parser')
+var logger = require('morgan');
+
+var usersController = require('./controllers/usersController.js');
+var locationsController = require('./controllers/locationsController.js');
+
 
 // MIDDLEWARE //
 require('./config/passport.js')(passport);
 
 app.use(express.static('public'));
-
+app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
-
-
-// ROUTES //
-var usersController = require('./controllers/usersController.js');
-app.use('/users', usersController)
-
-var locationsController = require('./controllers/locationsController.js');
-app.use('/locations', locationsController)
+app.use(cookieParser()); // to resolve "TypeError: Cannot read property 'connect.sid' of undefined"
 
 //PASSPORT
 /////////////////////////////////
@@ -36,6 +34,13 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+
+
+// ROUTES //
+app.use('/users', usersController)
+
+app.use('/locations', locationsController)
 
 
 
