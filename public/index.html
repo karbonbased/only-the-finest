@@ -69,5 +69,14 @@
 		</form>
 	</div>
 
+<!-- WRAP FORMS IN THIS -->
+<div ng-if="!mainCtrl.isLoggedIn">
+<!-- PLACE THESE CONTROLLERS ON FORMS -->
+<div ng-controller="SignupController as signup" ng-submit="signup.singup()">
+	
+</div>
+<div ng-controller="LoginController as login" ng-submit="login.login()"></div>
+</div>
+
 </body>
 </html>
