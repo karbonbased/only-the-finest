@@ -1,3 +1,4 @@
+  var map = null
 function initialize() {
 
   // Create an array of styles.
@@ -20,7 +21,7 @@ function initialize() {
       mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
     }
   };
-  var map = new google.maps.Map(document.getElementById('map-canvas'),
+   map = new google.maps.Map(document.getElementById('map-canvas'),
     mapOptions);
 
   //Associate the styled map with the MapTypeId and set it to display.
@@ -33,6 +34,11 @@ function initialize() {
 
 	// DISPLAY THE MAP
 	google.maps.event.addDomListener(window, 'load', initialize);
+  google.maps.event.addDomListener(window, "resize", function() {
+ var center = map.getCenter();
+ google.maps.event.trigger(map, "resize");
+ map.setCenter(center); 
+  });
 	}
 
 var addMarkers = function(map) {
