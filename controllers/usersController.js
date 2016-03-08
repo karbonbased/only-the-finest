@@ -75,19 +75,17 @@ router.get('/logout', function(req, res){
 });
 
 // LOGIN //
-router.post('/login', passport.authenticate('local-login', {
-	failureRedirect : '/'}), 
+router.post('/login', passport.authenticate('local-login'), 
 	function(req, res) {
         console.log(req.user);
     	res.send(req.user)
     });
 
-// UPDATE USER Object With a Location object in req.body //
+// UPDATE USER Object With a Location object in req.body 
 router.put('/:id', function(req, res){
     User.findById(req.params.id, function(err, user) {
         user.locations.push(req.body);
         user.save();
-
         res.send(user);
     });
 });

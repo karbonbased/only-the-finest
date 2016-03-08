@@ -1,21 +1,30 @@
-var app = angular.module('finestApp', []);
+var app = angular.module('finestApp', ['ngRoute']);
 
 
 // MAIN CONTROLLER //
 app.controller('MainController', ['$http', '$scope', function($http, $scope){
 
  	var controller = this;
-
-// call the map function, set to intialize function is maps.js		
-	this.map = function(){
-		controller.maps = initialize();
-	}
-
+	this.user = {};
+	this.isLoggedIn = false;
 	this.getUsers = function(){
 		//console.log('Getting Users');
 		$http({ method:'GET', url:'/users'}).then(function(response){
 			controller.userList = response.data;
 		});	
+	}
+	//SCOPE ON TO LISTEN FOR CHILDREN
+	$scope.$on('UserInfo',  function(eventObj, data) {
+		//save the data to our variables and switch flag
+		//controller.user = current user (when user is loggedIn)
+		controller.user = data;
+		controller.isLoggedIn = true;
+		controller.getUsers();
+	}) // closes scope.on
+
+	//call the map function, set to intialize function is maps.js		
+	this.map = function(){
+		controller.maps = initialize();
 	}
 	this.getUsers();
 
@@ -26,21 +35,6 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		});
 	}
 	this.getLocations();
-
-	this.addUserForm = function(){
-		//console.log('Formdata: ', this.userData);
-		$http({ method:'POST', url:'/users', data:this.userData}).then(function(result){
-			controller.getUsers();
-		});
-	};
-
-	/*
-	this.updateUser = function(){
-		$http({ method:'POST', url:'/users', data:currentUser}).then(function(result){
-			controller.getUsers();
-		});
-	};
-	*/
 
 	this.deleteLocation = function($index){
 
@@ -57,21 +51,6 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		//console.log(location[$index]); // undefined
 
 	};
-
-	// set up user and a flag
-	var controller = this;
-	this.user = {};
-	this.isLoggedIn = false;
-
-	// SCOPE ON TO LISTEN FOR CHILDREN
-	$scope.$on('UserInfo',  function(eventObj, data) {
-		//console.log(data);
-
-		//save the data to our variables and switch flag
-		//controller.user = current user (when user is loggedIn)
-		controller.user = data;
-		controller.isLoggedIn = true;
-	}) // closes scope.on
 
 	this.addLocationForm = function(){
 		console.log('Formdata: ', this.locationData);
@@ -101,11 +80,10 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 			function(err) {
 				console.log("error has occured in logout function");
 				console.log(err);
-			} //closes error route
-		) //closes promise
-	} //closes logout function
-
-}]); //closes controller
+				} //closes error route
+			) //closes promise
+		} //closes logout function
+	}]); //closes controller
 
 
 // LOGIN CONTROLLER //
@@ -115,10 +93,7 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 		password: null
 	}
 	var controller = this;
-	console.log(controller.userInfo)
-
-	
-
+	//console.log(controller.userInfo)
 	this.login = function() {
 		console.log("this.login route fired")
 		// get the data from the login route
@@ -129,15 +104,15 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 			})
 		// use promise to fix asynchronous issue
 		.then(function(results) {
-			console.log("::::::results.data is:::::::")
-			console.log(results.data)
+			//console.log("::::::results.data is:::::::")
+			//console.log(results.data)
 			controller.user = results;
 			//send the results to the parent controller
 			$scope.$emit('UserInfo', results.data)
 			},
 			//failure
 			function(err){
-			console.log("::::::error has occured:::::::")
+			console.log("::::::LOGIN FAILED, INVALID USER:::::::")
 			console.log(err)
 			});
 		} //closes ajax call
@@ -153,9 +128,7 @@ app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
 		email: null,
 		password: null
 	}
-
 	var controller = this;
-
 
 	this.signup = function() {
 		console.log(this.userInfo)
@@ -168,18 +141,34 @@ app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
 		// use promise to fix asynchronous issue
 		.then(function(results) {
 			console.log("::::::results.data is:::::::")
-			// console.log(results)
 		 	console.log(results.data)
 			controller.user = results;
 			//send the results to the parent controller
 			$scope.$emit('UserInfo', results.data)
-			// controller.getUsers();
-			},
-			//failure
-			function(err){
-			console.log("::::::error has occured:::::::")
-			console.log(err)
 			});
 		} //closes ajax call
 	// } //closes login function
-}])
+}]);
+
+//PARTIAL ROUTES//
+/*myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+    $locationProvider.html5Mode({ enabled: true }); // tell angular to use push state
+    $routeProvider.when('/url1', { //when http://localhost:3000/url1
+        templateUrl: 'partials/partial1.html', // render http://localhost:3000/partials/partial1.html
+        controller: 'Ctrl1', // attach controller Ctrl1
+        controllerAs: 'ctrl' // alias for Ctrl1 (like ng-controller="Ctrl1 as ctrl")
+    }).
+    when('/url2', {
+        templateUrl: 'partials/partial2.html',
+        controller: 'Ctrl1',
+        controllerAs: 'ctrl'
+    }).
+    when('/url3/:id', {
+        templateUrl: 'partials/partial3.html',
+        controller: 'Ctrl3',
+        controllerAs: 'ctrl'
+    });
+}]);*/
+
+
+
