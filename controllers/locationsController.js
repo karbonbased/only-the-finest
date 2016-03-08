@@ -98,8 +98,6 @@ var locations = [
 	];
 
 	// CREATE THE SEEDED LOCATIONS IN DB
-
-
 	Locations.create(locations, function(err, locations){
 		res.redirect('/');
 	});

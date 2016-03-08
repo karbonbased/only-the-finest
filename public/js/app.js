@@ -34,13 +34,13 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		});
 	};
 
-	this.addLocationForm = function(){
-		console.log('Formdata: ', this.locationData);
-		$http({ method:'POST', url:'/locations', data:this.locationData}).then(function(result){
-			controller.getLocations();
+	/*
+	this.updateUser = function(){
+		$http({ method:'POST', url:'/users', data:currentUser}).then(function(result){
+			controller.getUsers();
 		});
 	};
-
+	*/
 
 	this.deleteLocation = function($index){
 
@@ -68,9 +68,23 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		//console.log(data);
 
 		//save the data to our variables and switch flag
+		//controller.user = current user (when user is loggedIn)
 		controller.user = data;
 		controller.isLoggedIn = true;
 	}) // closes scope.on
+
+	this.addLocationForm = function(){
+		console.log('Formdata: ', this.locationData);
+		$http({ method:'POST', url:'/locations', data:this.locationData}).then(function(result){
+			controller.getLocations();
+			//put route to users, this will update the current user
+			$http({method: "PUT", url: "/users/" + controller.user._id, data: result.data}).then(function(results) {
+					controller.getUsers();
+				}), function() {
+					console.log(err);
+				}
+			});
+	};
 
 	// LOGOUT FUNCTION
 	this.logout = function() {
@@ -110,13 +124,14 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 		// get the data from the login route
 		$http({
 			method: "POST",
-			url: ("/users/login"),
+			url: '/users/login',
 			data: controller.userInfo
 			})
 		// use promise to fix asynchronous issue
 		.then(function(results) {
 			console.log("::::::results.data is:::::::")
-			//console.log(results.data)
+			console.log(results.data)
+			controller.user = results;
 			//send the results to the parent controller
 			$scope.$emit('UserInfo', results.data)
 			},
@@ -155,6 +170,7 @@ app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
 			console.log("::::::results.data is:::::::")
 			// console.log(results)
 		 	console.log(results.data)
+			controller.user = results;
 			//send the results to the parent controller
 			$scope.$emit('UserInfo', results.data)
 			// controller.getUsers();
