@@ -13,8 +13,6 @@ router.get('/', function(req, res){
 	});
 });
 
-
-
 // SEED ROUTE FOR USERS
 router.get('/seed', function(req, res){
     var users = [
@@ -63,7 +61,8 @@ router.get('/seed', function(req, res){
 router.post('/signup', passport.authenticate('local-signup', {
 	failureRedirect: '/'}), 
 	function(req, res) {
-	res.send(req.body)
+	res.send(req.user)
+
 });
 
 // LOGOUT //
@@ -76,7 +75,18 @@ router.get('/logout', function(req, res){
 router.post('/login', passport.authenticate('local-login', {
 	failureRedirect : '/'}), 
 	function(req, res) {
-	res.send(req.body)
+        console.log(req.user);
+    	res.send(req.user)
+    });
+
+// UPDATE USER Object With a Location object in req.body //
+router.put('/:id', function(req, res){
+    User.findById(req.params.id, function(err, user) {
+        user.locations.push(req.body);
+        user.save();
+
+        res.send(user);
+    });
 });
 
 
