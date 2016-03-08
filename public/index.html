@@ -22,15 +22,17 @@
 
 
 	<h1>Finest Things App</h1>
-
 <div id="main-area"> 
 	<section id="left-main">
 		<div id="left-main-content">
 			<h3>All Users</h3>
 		<div ng-repeat="user in mainCtrl.userList">
-			<p >{{user.name}}</p>	
-			<p ng-repeat="locations1 in user.locations">{{locations1.name}}</br><button ng-click="mainCtrl.deleteLocation($index)">delete</button></p></br>
-
+			<p>{{user.name}}</p>
+			<p>{{user._id}}</p>	
+			<p>{{user.password}}</p>
+			<p>{{isLoggedIn}}</p>
+			<p ng-repeat="locations1 in user.locations">{{locations1.name}}</br><button ng-if="mainCtrl.isLoggedIn"ng-click="mainCtrl.deleteLocation($index)">delete</button></p></br>
+			
 		</div>
 
 		<h3>All Locations</h3>
@@ -56,7 +58,7 @@
 			</form>
 		</div>
 
-		<div id="addLocationForm">
+		<div id="addLocationForm" ng-if="mainCtrl.isLoggedIn" >
 			<h3>New Location</h3>
 			<form ng-submit="mainCtrl.addLocationForm()">
 				<input type="text" ng-model="mainCtrl.locationData.name" placeholder="name"><br>

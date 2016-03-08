@@ -42,21 +42,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 	};
 	*/
 
-	this.deleteLocation = function($index){
 
-		var user = this.user;
-		console.log([$index])
-		//console.log(this.user) // empty object
-		console.log(this.locationList[$index])
-		//console.log(this.userList[$index])// jen
-		//console.log(this[$index]) // undefined
-		//console.log(user.locations[$index]) // user is not defined
-		//console.log(users.locations[$index]) // users is not defined
-		//console.log(this.userData[$index])
-		//console.log(locations[$index]); // error
-		//console.log(location[$index]); // undefined
-
-	};
 
 	// set up user and a flag
 	var controller = this;
@@ -84,6 +70,29 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 					console.log(err);
 				}
 			});
+	};
+
+	var controller = this;
+	this.user = {};
+	this.isLoggedIn = false;
+	
+
+	this.deleteLocation = function($index){
+		console.log('delete fired')
+		console.log()
+		console.log()
+		console.log()
+
+		$http({
+			method: "DELETE",
+			url:'/users',
+			data: this.userInfo
+		})
+		.then (
+			function(results) {
+				console.log(results)
+			}
+		)
 	};
 
 	// LOGOUT FUNCTION
