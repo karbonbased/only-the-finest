@@ -15,7 +15,7 @@
 <header>
 	<nav class="bar">
 		<a href="#">FINEST LOGO</a>
-		<a href="#">THIS ROUTE</a>
+		<a href="#addUserForm">THIS ROUTE</a>
 		<a href="#">LOCATIONS</a>
 		<a ng-click=mainCtrl.logout()>LOGOUT</a>
 	</nav>
@@ -58,7 +58,7 @@
 			</form>
 		</div>
 
-		<div id="addLocationForm">
+		<div ng-if="mainCtrl.isLoggedIn" id="addLocationForm">
 			<h3>New Location</h3>
 			<form ng-submit="mainCtrl.addLocationForm()">
 				<input type="text" ng-model="mainCtrl.locationData.name" placeholder="name"><br>
