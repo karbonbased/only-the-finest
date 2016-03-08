@@ -32,7 +32,7 @@
 <!-- 			<p ng-if="user.gender=='f'">Female</p>
 			<p ng-if="user.gender=='m'">Male</p> -->
 			<!-- <p>{{user.locations}}</p> -->		
-			<p ng-repeat="">{{user.locations}}</p>
+			<p ng-repeat="locations1 in user.locations">{{locations1.name}}</br><button ng-click="deleteLocation()">delete</button></p></br>
 
 		</div>
 
