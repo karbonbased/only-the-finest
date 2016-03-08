@@ -75,8 +75,7 @@ router.get('/logout', function(req, res){
 });
 
 // LOGIN //
-router.post('/login', passport.authenticate('local-login', {
-	failureRedirect : '/'}), 
+router.post('/login', passport.authenticate('local-login'), 
 	function(req, res) {
         console.log(req.user);
     	res.send(req.user)

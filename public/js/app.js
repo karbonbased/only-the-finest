@@ -57,6 +57,8 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		//controller.user = current user (when user is loggedIn)
 		controller.user = data;
 		controller.isLoggedIn = true;
+		console.log("/////////controller.user is now//////")
+		console.log(controller.user)
 	}) // closes scope.on
 
 	this.addLocationForm = function(){
@@ -142,13 +144,14 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 		.then(function(results) {
 			console.log("::::::results.data is:::::::")
 			console.log(results.data)
+			// console.log(results)
 			controller.user = results;
 			//send the results to the parent controller
 			$scope.$emit('UserInfo', results.data)
 			},
 			//failure
 			function(err){
-			console.log("::::::error has occured:::::::")
+			console.log("::::::LOGIN FAILED, INVALID USER:::::::")
 			console.log(err)
 			});
 		} //closes ajax call
