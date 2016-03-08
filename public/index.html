@@ -30,10 +30,9 @@
 		<div id="left-main-content">
 			<h3>All Users</h3>
 		<div ng-repeat="user in mainCtrl.userList">
-			<p>{{user.name}}</p>
-			<p ng-if="user.gender=='f'">Female</p>
-			<p ng-if="user.gender=='m'">Male</p>
-			<p>{{user.locations}}</p>
+			<p >{{user.name}}</p>	
+			<p ng-repeat="locations1 in user.locations">{{locations1.name}}</br><button ng-click="mainCtrl.deleteLocation($index)">delete</button></p></br>
+
 		</div>
 
 		<h3>All Locations</h3>

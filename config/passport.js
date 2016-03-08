@@ -4,7 +4,7 @@ var LocalStrategy   = require('passport-local').Strategy;
 var passport = require('passport');
 
 module.exports = function(passport) {
-console.log("passport file recognized")
+    console.log("passport file recognized")
 
 // ENCRYPT
 ////////////////////////////////////////////////

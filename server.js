@@ -43,6 +43,11 @@ app.use('/users', usersController)
 app.use('/locations', locationsController)
 
 
+app.get('/test', function(req, res) {
+	var bla = req.session;
+	res.send(bla);
+})
+
 
 //CONNECTIONS
 /////////////////////////////////
