@@ -44,7 +44,7 @@ var addMarkers = function(map) {
 			for (var i=0; i < result.length; i++) {
 				marker = new google.maps.Marker ({
 				    map: map,
-				    icon: 'http://maps.google.com/mapfiles/ms/icons/orange-dot.png',
+				    icon: '../img/money_bag_marker.png',
 				    position: { lat: result[i].lat, lng: result[i].lng },
 				    title: result[i].name
 				});
