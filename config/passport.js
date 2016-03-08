@@ -14,19 +14,22 @@ module.exports = function(passport) {
 
   // USED TO SERIALIZE THE USER FOR THE SESSION
     passport.serializeUser(function(user, done) {
+        console.log('Passport.js Serialize User');
         done(null, user.id);
     });
 
     // used to deserialize the user
     passport.deserializeUser(function(id, done) {
+        console.log('Passport.js Deserialize User');
         User.findById(id, function(err, user) {
+            console.log('Deserialize: inside Mongoose find()');
             done(err, user);
         });
     });
 
 
     // SET UP THE LOCAL STRATEGY FOR SIGN-UP
-passport.use('local-signup', new LocalStrategy({
+    passport.use('local-signup', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'email',
         passwordField : 'password',
@@ -87,17 +90,21 @@ passport.use('local-signup', new LocalStrategy({
         // we are checking to see if the user trying to login already exists
         User.findOne({ 'email' :  email }, function(err, user) {
             // if there are any errors, return the error before anything else
-            if (err)
+            if (err) {
                 return done(err);
+            }
 
             // if no user is found, return the message
-            if (!user)
+            if (!user) {
                 return done(null, false, console.log('No user found')); 
+            }
 
             // if the user is found but the password is wrong
-            if (!user.validPassword(password))
+            if (!user.validPassword(password)) {
                 return done(null, false, console.log('Wrong password.'));
+            }
 
+            console.log('user within passport local-login config.js: ', user);
             // all is well, return successful user
             return done(null, user);
         });

@@ -57,15 +57,23 @@ router.get('/seed', function(req, res){
 	// CREATE THE SEEDED USERS IN DB
 	User.create(users, function(err, users){
 		res.redirect('/');
-		});
+	});
 });
 
 // NEW SIGNUP //
 router.post('/signup', passport.authenticate('local-signup', {
-	failureRedirect: '/'}), 
-	function(req, res) {
-	res.send(req.user)
+	failureRedirect: '/nosuchurl'}), function(req, res) {
+		console.log('The user in the signup route: ', req.user);
+		res.send(req.user);
+});
 
+// query who's logged in
+router.get('/currentUser', function(req, res) {
+	if (req.isAuthenticated()) {
+		res.send(req.user);
+	} else {
+		res.send('no user persisted');
+	}
 });
 
 // LOGOUT //
@@ -75,11 +83,13 @@ router.get('/logout', function(req, res){
 });
 
 // LOGIN //
-router.post('/login', passport.authenticate('local-login'), 
-	function(req, res) {
-        console.log(req.user);
-    	res.send(req.user)
-    });
+router.post('/login', passport.authenticate('local-login', {
+	failureRedirect: '/thisdoesnotwork' }), function(req, res) {
+
+      console.log('The user in the login route: ', req.user);
+    	res.send(req.user);
+
+});
 
 // UPDATE USER Object With a Location object in req.body //
 router.put('/:id', function(req, res){
@@ -91,15 +101,22 @@ router.put('/:id', function(req, res){
     });
 });
 
-// DELETE ROUTE FOR USERS LOCATION
-router.delete('/:id', function(req, res){
-	User.findById(req.params.id, function(err, user) {
-		user.locations.splice($index,1);
-		user.save();
 
-		res.send(user);
-	})
-})
+// DELETE ROUTE FOR USERS LOCATION
+router.delete('/:locationID', function(req, res){
+
+	console.log('DELETE ROUTE ACCESED')
+	console.log('DELETE ROUTE LOCATION ID: ', req.params.locationID);
+	console.log('The current user (DELETE route): ', req.user);
+
+	res.send("testing delete route");
+	//res.send('Hi hi hi hi hi')
+});
+
+
+
+
+
 
 module.exports = router;
 
