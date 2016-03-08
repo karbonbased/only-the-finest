@@ -93,7 +93,7 @@ router.put('/:id', function(req, res){
 });
 
 // DELETE ROUTE FOR USERS LOCATION
-router.delete('/', function(req, res){
+router.delete('/:id', function(req, res){
 	User.findById(req.params.id, function(err, user) {
 		user.locations.splice($index,1);
 		user.save();

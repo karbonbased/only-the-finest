@@ -78,22 +78,24 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 	
 
 	this.deleteLocation = function($index){
+		var user = this.user;
 		console.log('delete fired')
-		console.log()
-		console.log()
-		console.log()
+		//console.log(user)
+		//console.log(this.user)
+		console.log(user.locations[$index])
 
 		$http({
 			method: "DELETE",
-			url:'/users',
-			data: this.userInfo
+			url:'/users/' + user._id,
+			data: user.locations[$index]
 		})
 		.then (
 			function(results) {
+				console.log(data)
 				console.log(results)
 			}
 		)
-	};
+	 };
 
 	// LOGOUT FUNCTION
 	this.logout = function() {
