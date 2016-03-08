@@ -59,6 +59,10 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 			//put route to users, this will update the current user
 			$http({method: "PUT", url: "/users/" + controller.user._id, data: result.data}).then(function(results) {
 					controller.getUsers();
+					//Clear location input fields after submit
+					controller.locationData.name = undefined;
+          controller.locationData.lat = undefined;
+          controller.locationData.lng = undefined;
 				}), function() {
 					console.log(err);
 				}
