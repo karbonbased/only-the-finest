@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/karbonbased/only-the-finest#readme",
   "dependencies": {
+    "angular-google-maps": "^2.3.2",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
     "cookie-parser": "^1.4.1",
