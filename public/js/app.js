@@ -21,10 +21,6 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		controller.getUsers();
 	}) // closes scope.on
 
-	// call the map function, set to intialize function is maps.js		
-	this.map = function(){
-		controller.maps = initialize();
-	}
 	this.getUsers();
 
 	this.getLocations = function(){
@@ -51,13 +47,13 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 
 
 	 this.deleteLocation = function(location1){
-	 	
+	 	console.log('++++++++++++++++++++++++++++++')
+
 	 	this.locationId = location1._id;
-	 	console.log(this.locationId) // location ID
+	 	//console.log(this.locationId) // location ID
 	 	console.log(controller.locationId) //location ID
 
 		//console.log(this.location)
-
 
 		$http({
 			method: "DELETE",
@@ -65,6 +61,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		})
 		.then (
 			function(response) {
+					controller.getUsers();
 					console.log('RESPONSE FROM THE SERVER IN THE CLIENT: ', response.data);
 			}, 
 			function(err){
@@ -169,6 +166,13 @@ app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
 	$http({ url: '/users/currentUser', method: 'GET'}).then(function(result) {
 		console.log('TEST AJAX CALL AFTER SIGNUP: ', result.data);
 		});
+}]);
+
+app.controller('MapController', ['$scope', function($scope) {
+	// call the map function, set to intialize function is maps.js		
+	this.map = function(){
+		controller.maps = initialize();
+	}
 }]);
 
 //PARTIAL ROUTES//

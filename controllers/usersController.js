@@ -104,13 +104,38 @@ router.put('/:id', function(req, res){
 // DELETE ROUTE FOR USERS LOCATION
 router.delete('/:locationID', function(req, res){
 
-	console.log('DELETE ROUTE ACCESED')
-	console.log('DELETE ROUTE LOCATION ID: ', req.params.locationID);
-	console.log('The current user (DELETE route): ', req.user);
+	// console.log('DELETE ROUTE ACCESED')
+	// console.log('DELETE ROUTE LOCATION ID: ', req.params.locationID);
+	// console.log('The current user (DELETE route): ', req.user);
 
-	res.send("testing delete route");
-	//res.send('Hi hi hi hi hi')
-});
+		// Locations.findById(req.params.locationID, function(err, task){
+		// 	console.log(req.params.locationID) //undefined
+		// 	console.log(req.user.id)
+
+			  User.findById(req.user.id, function(err, user) {
+			  	console.log(user.locations)
+			  //	user.locations
+			  for ( var i = 0; i < user.locations.length; i++){
+			  	if( user.locations[i]._id = req.params.locationID) {
+			  		user.locations[i].remove();
+			  		user.save();
+
+			  	}
+			  }
+			  
+			  console.log(user.locations)
+
+			  	//console.log(req.user.locations)
+			  		//user.locations.id(req.params.id).remove()
+			 // 		user.save(function() {
+			 // 			//res.redirect('/users')
+			res.send('were making it now')
+	 	// 	});
+	 	 //});
+	 })
+})
+
+
 
 
 
