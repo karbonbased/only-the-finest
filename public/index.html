@@ -90,8 +90,10 @@
 	</section>
 	
 	<section id="right-main">
-		 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-		<div id="map-canvas">{{mainCtrl.map()}}</div>
+		<div ng-controller="MapController as mapCtrl">
+			 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+			<div id="map-canvas">{{mapCtrl.map()}}</div>
+		</div>
 	</section>
 </div>
 
