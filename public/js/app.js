@@ -21,10 +21,6 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		controller.getUsers();
 	}) // closes scope.on
 
-	// call the map function, set to intialize function is maps.js		
-	this.map = function(){
-		controller.maps = initialize();
-	}
 	this.getUsers();
 
 	this.getLocations = function(){
@@ -207,6 +203,13 @@ app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
 	$http({ url: '/users/currentUser', method: 'GET'}).then(function(result) {
 		console.log('TEST AJAX CALL AFTER SIGNUP: ', result.data);
 		});
+}]);
+
+app.controller('MapController', ['$scope', function($scope) {
+	// call the map function, set to intialize function is maps.js		
+	this.map = function(){
+		controller.maps = initialize();
+	}
 }]);
 
 //PARTIAL ROUTES//
