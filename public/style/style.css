@@ -38,7 +38,7 @@ body {
 
 .top-content {
 	/*flex: 1 1 auto;*/
-	align-content: ;
+	/*align-content: none;*/
 }
 
 .bar {
@@ -75,8 +75,8 @@ body {
 }
 
 #map-canvas {
-	height: 700px; 
-	width: 900px;
+	height: 630px; 
+	width: 810px;
 	display: inline-block;
 	margin-top: 5px;
 	border-radius: 5px;
@@ -85,7 +85,7 @@ body {
 #addUserForm {
 	display: flex;
 	flex-direction: row;
-	padding: 2em;
+	/*padding: 2em;*/
 }
 
 #signup {
@@ -116,8 +116,31 @@ body {
 
 @media(max-width: 1000px ) {
 #map-canvas {
-	height: 750px; 
+	height: 630px; 
 	width: 700px;
+	display: inline-block;
+	margin-top: 5px;
+	border-radius: 5px;
+	border: 1px solid white;
+}
+}
+
+@media(max-width: 900px ) {
+#map-canvas {
+	height: 630px; 
+	width: 600px;
+	display: inline-block;
+	margin-top: 5px;
+	border-radius: 5px;
+	border: 1px solid white;
+}
+}
+
+
+@media(max-width: 800px ) {
+#map-canvas {
+	height: 630px; 
+	width: 500px;
 	display: inline-block;
 	margin-top: 5px;
 	border-radius: 5px;
@@ -127,7 +150,7 @@ body {
 
 @media(max-width: 700px ) {
 #map-canvas {
-	height: 750px; 
+	height: 630px; 
 	width: 450px;
 	display: inline-block;
 	margin-top: 5px;
@@ -135,6 +158,17 @@ body {
 	border: 1px solid white;
 }
 }
+
+@media(max-width: 600px) {
+	#top-elements {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: baseline;
+}
+} 
+
 
 @media(max-width: 300px ) {
 	.bar {
@@ -144,10 +178,36 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	flex-wrap: nowrap;
-	background-color: red;
+	background-color: black;
 	width: 100%;
 	padding: 20px;
 	border-bottom: 1px solid rgba(255,255,255,0.5);
 	border-top: 1px solid rgba(255,255,255,0.5);
 	}
+
+#addUserForm {
+	display: flex;
+	flex-direction: column;
+	/*padding: 2em;*/
+}
+
+.top-content {
+	/*flex: 1 1 auto;*/
+	padding-left: 2em;
+}
+
+
+ #main-area {
+ 	display: flex;
+ 	flex-direction: column-reverse;
+ }
+
+#map-canvas {
+	height: 350px; 
+	width: 220px;
+	display: inline-block;
+	margin-top: 5px;
+	border-radius: 5px;
+	border: 1px solid white;
+}
 }
