@@ -18,7 +18,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 	$scope.$on('UserInfo',  function(eventObj, data) {
 		controller.user = data;
 		controller.isLoggedIn = true;
-		console.log("Within mainController: User info received from loginController emit: ", controller.user);
+		controller.getUsers();
 	}) // closes scope.on
 
 	// call the map function, set to intialize function is maps.js		
