@@ -161,6 +161,8 @@ body {
       }
     /*END SEARCH BAR*/
 
+.angular-google-map-container { height: 400px; }
+
 @media(max-width: 900px ) {
 #map-canvas {
 	height: 700px; 
