@@ -100,6 +100,15 @@ router.put('/:id', function(req, res){
     });
 });
 
+// UPDATE USER OBJECT WITH CLICKED LOCATION
+router.put(':id', function(req, res){
+	console.log(req.params.id)
+		User.findById(req.params.id, function(err, user){
+			user.locations.push('hello');
+			user.save();
+			res.send("we're saving")
+		})
+})
 
 // DELETE ROUTE FOR USERS LOCATION
 router.delete('/:locationID', function(req, res){

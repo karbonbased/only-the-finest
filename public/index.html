@@ -68,8 +68,8 @@
 		</div>
 
 		<h3>All Locations</h3>
-		<div ng-repeat="location in mainCtrl.locationList">
-			<p>{{location.name}}</p>
+		<div >
+			<p ng-repeat="location in mainCtrl.locationList" ng-click="mainCtrl.addLocation(location)">{{location.name}}</p>
 		</div>
 
 

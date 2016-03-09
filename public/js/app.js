@@ -50,6 +50,48 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 	};
 
 
+	this.addLocation = function(location){
+		var abcd = null;
+		this.abcd = location;
+		console.log(this.abcd)// undefined
+		
+
+		$http({
+			method: "PUT", 
+			url: "/users/" + controller.user._id, 
+			//data: result.data 
+		})
+		.then(
+			function(results) {
+					controller.getUsers();
+				}, 
+				function() {
+					console.log(err);
+				}
+			);
+	};
+
+	   //      var country;
+    //     this.country = region;
+    //     console.log(this.country)
+
+
+
+    //     $http.get('/wbinfo/byName/' + this.country).then(
+    //     //success
+    //     function(response){
+    //         controller.regData = response.data;
+    //         console.log(controller.regData)
+
+    //     //controller.regions = response.data;
+    //     },
+    //     //error
+    //     function(){
+    //         console.log(err);
+    //     }
+    // )
+    // } 
+
 	 this.deleteLocation = function(location1){
 
 	 	this.locationId = location1._id;
