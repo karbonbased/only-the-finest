@@ -1,13 +1,5 @@
 var app = angular.module('finestApp', ['ngRoute']);
 
-// MAP CONTROLLER
-app.controller('MapController', ['$scope', function($scope) {
-	// var controller = this;
-	// call the map function, set to intialize function is maps.js		
-	this.map = function(){
-		controller.maps = initialize();
-	}
-}]);
 
 // MAIN CONTROLLER //
 app.controller('MainController', ['$http', '$scope', function($http, $scope){
@@ -176,7 +168,13 @@ app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
 		});
 }]);
 
-
+app.controller('MapController', ['$scope', function($scope) {
+	var controller = this;
+	// call the map function, set to intialize function is maps.js		
+	this.map = function(){
+		controller.maps = initialize();
+	}
+}]);
 
 //PARTIAL ROUTES//
 /*myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
