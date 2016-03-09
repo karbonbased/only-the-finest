@@ -13,7 +13,8 @@ function initialize() {
 
       var map = new google.maps.Map(document.getElementById('map-canvas'), {
         center: {lat: 40.696829, lng: -73.935232},
-        zoom: 13,
+        zoom: 12,
+        minZoom: 10,
         streetViewControl: false,
         mapTypeControl: false,
         mapTypeId: [google.maps.MapTypeId.ROADMAP, 'map_style']
@@ -181,7 +182,7 @@ function initialize() {
 
 //   }
 
-// ORIGINAL WORKING MAP CODE
+// ORIGINAL WORKING MAP CODE WITH STYLE W/O SEARCH
 // function initialize() {
 
 //   // Create an array of styles.
