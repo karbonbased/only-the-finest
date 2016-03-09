@@ -51,13 +51,13 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 
 
 	 this.deleteLocation = function(location1){
-	 	
+	 	console.log('++++++++++++++++++++++++++++++')
+
 	 	this.locationId = location1._id;
-	 	console.log(this.locationId) // location ID
+	 	//console.log(this.locationId) // location ID
 	 	console.log(controller.locationId) //location ID
 
 		//console.log(this.location)
-
 
 		$http({
 			method: "DELETE",
@@ -65,6 +65,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		})
 		.then (
 			function(response) {
+					controller.getUsers();
 					console.log('RESPONSE FROM THE SERVER IN THE CLIENT: ', response.data);
 			}, 
 			function(err){
@@ -120,12 +121,9 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 			//send the results to the parent controller
 			$scope.$emit('UserInfo', results.data);
 
-
 			// test ajax call to check session persistence
 			$http({ url: '/users/currentUser', method: 'GET'}).then(function(result) {
-
 				console.log('TEST AJAX CALL AFTER LOGIN: ', result.data);
-
 			});
 
 			},
