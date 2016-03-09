@@ -25,6 +25,20 @@ body {
 	background-color: rgb(42,42,42);
 	color: white;
 	font-family: NeutraLight, sans-serif;
+	font-size: 0.8em;
+}
+
+#top-elements {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-around;
+	align-items: baseline;
+}
+
+.top-content {
+	/*flex: 1 1 auto;*/
+	align-content: ;
 }
 
 .bar {
@@ -61,11 +75,43 @@ body {
 }
 
 #map-canvas {
-	height: 750px; 
-	width: 1000px;
+	height: 700px; 
+	width: 900px;
 	display: inline-block;
 	margin-top: 5px;
 	border-radius: 5px;
+}
+
+#addUserForm {
+	display: flex;
+	flex-direction: row;
+	padding: 2em;
+}
+
+#signup {
+	margin-right: 1em;
+}
+
+ #main-area {
+ 	display: flex;
+ 	flex-direction: row;
+ }
+
+#left-main {
+   width: 12em;
+  	border: 1px solid rgba(202,188,255,0.9);
+   display: flex;
+   flex-direction: column;
+   height: 95em;
+   margin-left: 1em
+}
+
+#left-main-content {
+	padding-left: 30px;
+}
+
+#right-main {
+	margin-left: 1.5em;
 }
 
 /*GOOGLE PLACES SEARCH BAR*/
@@ -114,24 +160,6 @@ body {
         width: 345px;
       }
     /*END SEARCH BAR*/
-
- #main-area {
- 	display: flex;
- 	flex-direction: row;
- 	
- }
-
-#left-main {
-   width: 12em;
-  	border: 1px solid rgba(202,188,255,0.9);
-   display: flex;
-   flex-direction: column;
-   height: 95em;
-}
-
-#left-main-content {
-	padding-left: 30px;
-}
 
 @media(max-width: 1000px ) {
 #map-canvas {
