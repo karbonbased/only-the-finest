@@ -27,13 +27,13 @@
 		<a href="/">FINEST LOGO</a>
 		<a href="/users">USERS</a>
 		<a href="/locations">LOCATIONS</a>
-		<a ng-click=mainCtrl.logout()> {{ mainCtrl.user.name }} LOGOUT</a>
+		<a ng-click=mainCtrl.logout() ng-if="mainCtrl.isLoggedIn"> {{ mainCtrl.user.name }} LOGOUT</a>
 	</nav>
 </header>
 
 	<div ng-view></div>
 	<div id="top-elements">
-		<h1 class="top-content" id="greeting">Finest Things App</h1><span class="top-content">USER LOGGED IN: {{ mainCtrl.user.name }} </span>
+		<h1 class="top-content" id="greeting">Finest Things App</h1><span ng-if="mainCtrl.isLoggedIn">HELLO {{ mainCtrl.user.name }} </span>
 		<div ng-if="!mainCtrl.isLoggedIn" id="addUserForm">
 			<div class="top-content" id="signup">
 				<h3>Sign Up</h3>
