@@ -169,6 +169,7 @@ app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
 }]);
 
 app.controller('MapController', ['$scope', function($scope) {
+	var controller = this;
 	// call the map function, set to intialize function is maps.js		
 	this.map = function(){
 		controller.maps = initialize();
