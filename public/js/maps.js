@@ -1,6 +1,6 @@
-  var map = null
+var map = null
  
-// WORKING SAMPLE CODE FROM GOOGLE
+// WORKING CODE WITH BUG
 function initialize() {
 
       // Create an array of styles.
@@ -79,7 +79,13 @@ function initialize() {
         map.fitBounds(bounds);
       
       });
-    }
+        // DISPLAY THE MAP
+  google.maps.event.addDomListener(window, "resize", function() {
+  var center = map.getCenter();
+  google.maps.event.trigger(map, "resize");
+  map.setCenter(center); 
+  })
+}
 
 
 // function initialize() {
