@@ -5,7 +5,7 @@ var app = angular.module('finestApp', ['ngRoute']);
 app.controller('MainController', ['$http', '$scope', function($http, $scope){
 
  	var controller = this;
-	this.user = {};
+ 	this.user = {};
 	this.isLoggedIn = false;
 	this.getUsers = function(){
 		//console.log('Getting Users');
@@ -13,16 +13,15 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 			controller.userList = response.data;
 		});	
 	}
-	//SCOPE ON TO LISTEN FOR CHILDREN
+
+	// SCOPE ON TO LISTEN FOR CHILDREN
 	$scope.$on('UserInfo',  function(eventObj, data) {
-		//save the data to our variables and switch flag
-		//controller.user = current user (when user is loggedIn)
 		controller.user = data;
 		controller.isLoggedIn = true;
 		controller.getUsers();
 	}) // closes scope.on
 
-	//call the map function, set to intialize function is maps.js		
+	// call the map function, set to intialize function is maps.js		
 	this.map = function(){
 		controller.maps = initialize();
 	}
@@ -36,34 +35,43 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 	}
 	this.getLocations();
 
-	this.deleteLocation = function($index){
-
-		var user = this.user;
-		console.log([$index])
-		//console.log(this.user) // empty object
-		console.log(this.locationList[$index])
-		//console.log(this.userList[$index])// jen
-		//console.log(this[$index]) // undefined
-		//console.log(user.locations[$index]) // user is not defined
-		//console.log(users.locations[$index]) // users is not defined
-		//console.log(this.userData[$index])
-		//console.log(locations[$index]); // error
-		//console.log(location[$index]); // undefined
-
-	};
-
 	this.addLocationForm = function(){
 		console.log('Formdata: ', this.locationData);
-		$http({ method:'POST', url:'/locations', data:this.locationData}).then(function(result){
+		$http({ method:'POST', url: '/locations', data: this.locationData }).then(function(result){
 			controller.getLocations();
+
 			//put route to users, this will update the current user
-			$http({method: "PUT", url: "/users/" + controller.user._id, data: result.data}).then(function(results) {
+			$http({method: "PUT", url: "/users/" + controller.user._id, data: result.data }).then(function(results) {
 					controller.getUsers();
 				}), function() {
 					console.log(err);
 				}
 			});
 	};
+
+
+	 this.deleteLocation = function(location1){
+	 	
+	 	this.locationId = location1._id;
+	 	console.log(this.locationId) // location ID
+	 	console.log(controller.locationId) //location ID
+
+		//console.log(this.location)
+
+
+		$http({
+			method: "DELETE",
+			url:'/users/' + controller.locationId
+		})
+		.then (
+			function(response) {
+					console.log('RESPONSE FROM THE SERVER IN THE CLIENT: ', response.data);
+			}, 
+			function(err){
+				console.log(err)
+			}
+		)
+	 };
 
 	// LOGOUT FUNCTION
 	this.logout = function() {
@@ -80,10 +88,11 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 			function(err) {
 				console.log("error has occured in logout function");
 				console.log(err);
-				} //closes error route
-			) //closes promise
-		} //closes logout function
-	}]); //closes controller
+			} //closes error route
+		) //closes promise
+	} //closes logout function
+
+}]); //closes controller
 
 
 // LOGIN CONTROLLER //
@@ -94,6 +103,7 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 	}
 	var controller = this;
 	//console.log(controller.userInfo)
+
 	this.login = function() {
 		console.log("this.login route fired")
 		// get the data from the login route
@@ -108,7 +118,16 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 			//console.log(results.data)
 			controller.user = results;
 			//send the results to the parent controller
-			$scope.$emit('UserInfo', results.data)
+			$scope.$emit('UserInfo', results.data);
+
+
+			// test ajax call to check session persistence
+			$http({ url: '/users/currentUser', method: 'GET'}).then(function(result) {
+
+				console.log('TEST AJAX CALL AFTER LOGIN: ', result.data);
+
+			});
+
 			},
 			//failure
 			function(err){
@@ -116,8 +135,8 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 			console.log(err)
 			});
 		} //closes ajax call
-	// } //closes login function
-}])
+
+}]);
 
 // SIGNUP CONTROLLER
 app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
@@ -148,6 +167,11 @@ app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
 			});
 		} //closes ajax call
 	// } //closes login function
+
+	// test ajax call to check session persistence
+	$http({ url: '/users/currentUser', method: 'GET'}).then(function(result) {
+		console.log('TEST AJAX CALL AFTER SIGNUP: ', result.data);
+		});
 }]);
 
 //PARTIAL ROUTES//
