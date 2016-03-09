@@ -49,7 +49,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 	this.addLocation = function(location){
 		var abcd = null;
 		this.abcd = location;
-		console.log(this.abcd)// undefined
+		console.log(this.abcd) // location object 
 		
 
 		$http({
@@ -58,8 +58,9 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 			//data: result.data 
 		})
 		.then(
-			function(results) {
-					controller.getUsers();
+			function(response) {
+					console.log(controller)
+					//controller.location
 				}, 
 				function() {
 					console.log(err);
@@ -206,6 +207,7 @@ app.controller('SignupController', ['$http', '$scope', function($http, $scope) {
 }]);
 
 app.controller('MapController', ['$scope', function($scope) {
+	var controller = this;
 	// call the map function, set to intialize function is maps.js		
 	this.map = function(){
 		controller.maps = initialize();
