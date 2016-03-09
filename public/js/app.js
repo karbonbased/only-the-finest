@@ -120,12 +120,9 @@ app.controller('LoginController', ['$http', '$scope', function($http, $scope) {
 			//send the results to the parent controller
 			$scope.$emit('UserInfo', results.data);
 
-
 			// test ajax call to check session persistence
 			$http({ url: '/users/currentUser', method: 'GET'}).then(function(result) {
-
 				console.log('TEST AJAX CALL AFTER LOGIN: ', result.data);
-
 			});
 
 			},
