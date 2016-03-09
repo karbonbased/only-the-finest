@@ -161,10 +161,10 @@ body {
       }
     /*END SEARCH BAR*/
 
-@media(max-width: 1000px ) {
+@media(max-width: 900px ) {
 #map-canvas {
-	height: 750px; 
-	width: 700px;
+	height: 700px; 
+	width: 600px;
 	display: inline-block;
 	margin-top: 5px;
 	border-radius: 5px;
@@ -172,9 +172,20 @@ body {
 }
 }
 
-@media(max-width: 700px ) {
+@media(max-width: 800px ) {
 #map-canvas {
-	height: 750px; 
+	height: 700px; 
+	width: 500px;
+	display: inline-block;
+	margin-top: 5px;
+	border-radius: 5px;
+	border: 1px solid white;
+}
+}
+
+@media(max-width: 600px ) {
+#map-canvas {
+	height: 600px; 
 	width: 450px;
 	display: inline-block;
 	margin-top: 5px;
