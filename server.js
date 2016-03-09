@@ -11,37 +11,29 @@ var mongoUri = process.env.MONGOLAB_URI || 'mongodb://localhost:27017/finestApp'
 var cookieParser = require('cookie-parser')
 var logger = require('morgan');
 
-var usersController = require('./controllers/usersController.js');
-var locationsController = require('./controllers/locationsController.js');
-
+// DB CONNECT
+mongoose.connect(mongoUri);
 
 // MIDDLEWARE //
 require('./config/passport.js')(passport);
 
+var usersController = require('./controllers/usersController.js');
+var locationsController = require('./controllers/locationsController.js');
+
 app.use(express.static('public'));
-app.use(logger('dev'));
+// app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
-app.use(cookieParser()); // to resolve "TypeError: Cannot read property 'connect.sid' of undefined"
 
-//PASSPORT
-/////////////////////////////////
+app.use(session({ name: 'finestapp', secret: 'conventional wisdom' }));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session({ 
-	name: 'finestapp', 
-	secret: 'conventional wisdom', 
-	resave: true,
-    saveUninitialized: true 
-}));
 
-
+app.use(cookieParser()); // to resolve "TypeError: Cannot read property 'connect.sid' of undefined"
 
 // ROUTES //
 app.use('/users', usersController)
-
 app.use('/locations', locationsController)
-
 
 app.get('/test', function(req, res) {
 	var bla = req.session;
@@ -49,10 +41,7 @@ app.get('/test', function(req, res) {
 })
 
 
-//CONNECTIONS
-/////////////////////////////////
-mongoose.connect(mongoUri);
-
+// LISTENER
 app.listen(port, function() {
-console.log('listening on port ' + port)
+	console.log('listening on port ' + port)
 });
