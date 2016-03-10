@@ -1,12 +1,11 @@
 #Well Spent
 
-+++++++++++++++++++++++++++++++++++++++++++++++++++
 www.well-spent.herokuapp.com
-+++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ##Description
 
-This is a web app where the user has the ability to curate a list of favorite spots.  They can search and save locations as well as add other users' locations to their list.
+This is a MEAN stack web app with RESTful routes.  They can search and save locations as well as add other users' locations to their list.  The user has the ability to curate a list of favorite spots.  
+
 
 ##Tech used / Stack
 
@@ -14,25 +13,28 @@ This is a web app where the user has the ability to curate a list of favorite sp
 - Express
 - AngularJS
 - Node
-- Passport
-- Google Maps API
-- Google Places API
-
+- PassportJS
+- Google Maps API (https://developers.google.com/maps/)
+- Google Places API	(https://developers.google.com/places/)
+- JavaScript
+- CSS
+- HTML
 
 
 ##Features
 
-- special moneybag map markers for the saved locations
-- stylized map
-- search bar in the map
+- user authentication allows for both public and user specfic content.   
+- users can add and delete locations from their profile.
+- custom moneybag map markers for the saved locations
+- custom stylized map
+- search box
 - partials to display all users / all locations
-- users can add and delete locations from their profile
-- 
-
+- fully responsive with a mobile first mindset
+- 2 models (users/locations)
 
 
 ##Future Implementations
 
 - info box displayed on click of marker
 - refine the search to only $$$$ options
-- 
+- click on map to add location to users' list
