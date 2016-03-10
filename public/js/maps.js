@@ -27,9 +27,9 @@ function initialize() {
       // Create the search box and link it to the UI element.
       var input = document.getElementById('pac-input');
       var searchBox = new google.maps.places.SearchBox(input);
-      map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+      // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
 
-      // Bias the SearchBox results towards current map's viewport.
+      // // Bias the SearchBox results towards current map's viewport.
       map.addListener('bounds_changed', function() {
         searchBox.setBounds(map.getBounds());
       });
@@ -85,6 +85,10 @@ function initialize() {
   google.maps.event.trigger(map, "resize");
   map.setCenter(center); 
   })
+    // google.maps.event.addDomListener(window, "click", addMarkers(map));
+  // google.maps.event.addDomListener(window, "click", function() {
+  //   addMarkers(map);
+  // })
 }
 
 
