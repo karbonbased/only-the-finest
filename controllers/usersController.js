@@ -111,26 +111,15 @@ router.put('/locationAdd/:id', function(req, res){
 	 	})
 })
 
-// DELETE ROUTE FOR USERS LOCATION
+
+// 	DELETE ROUTE FIXED
 router.delete('/:locationId', function(req, res){
-	  User.findById(req.user.id, function(err, user) {
-	  	
-		  for ( var i = 0; i < user.locations.length; i++){
-		  	if( user.locations[i]._id = req.params.locationId) {
-		  		console.log(user.locations[i])
-		  		user.locations[i].remove();
-		  		user.save();
-
-	  	}
-	  }
-	  
-	  // console.log(user.locations)
-
-	res.send('were making it now')
-
-	  })
+ 	User.findById(req.user.id, function(err, user){
+		user.locations.id(req.params.locationId).remove();
+		user.save();
+		res.send('were making it now')
+  })
 })
-
 
 
 
