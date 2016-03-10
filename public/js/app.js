@@ -49,18 +49,20 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 	this.addLocation = function(location){
 		var abcd = null;
 		this.abcd = location;
-		console.log(this.abcd) // location object 
-		
+		//console.log(this.abcd) // location object 
+		console.log(location)
 
 		$http({
 			method: "PUT", 
-			url: "/users/" + controller.user._id, 
-			//data: result.data 
+			url: "/users/locationAdd/" + controller.user._id, 
+			data: this.abcd
 		})
 		.then(
 			function(response) {
-					console.log(controller)
-					//controller.location
+				//console.log('im the response ' + response)
+					console.log('sup fools im in the console')
+					console.log(location)
+					console.log(response.data)
 				}, 
 				function() {
 					console.log(err);

@@ -101,13 +101,14 @@ router.put('/:id', function(req, res){
 });
 
 // UPDATE USER OBJECT WITH CLICKED LOCATION
-router.put(':id', function(req, res){
-	console.log(req.params.id)
-		User.findById(req.params.id, function(err, user){
-			user.locations.push('hello');
-			user.save();
-			res.send("we're saving")
-		})
+router.put('/locationAdd/:id', function(req, res){
+	 //console.log(req)
+	User.findById(req.params.id, function(err, user){
+		console.log(user)
+	 		user.locations.push();
+	 		user.save();
+	 		res.send(user) // this comes up in postman this is response.data
+	 	})
 })
 
 // DELETE ROUTE FOR USERS LOCATION
@@ -122,11 +123,11 @@ router.delete('/:locationID', function(req, res){
 	  	}
 	  }
 	  
-	  console.log(user.locations)
+	  // console.log(user.locations)
 
 	res.send('were making it now')
 
-	 })
+	  })
 })
 
 
