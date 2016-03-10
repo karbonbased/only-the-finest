@@ -2,16 +2,16 @@
 	<h3>All Locations</h3>
 
 	<div ng-if="mainCtrl.isLoggedIn" id="addLocationForm">
-		<h3>New Location</h3>
+		<span class="username">New Location</span>
 		<form ng-submit="mainCtrl.addLocationForm()">
-			<input type="text" ng-model="mainCtrl.locationData.name" placeholder="name"><br>
-			<input type="number" step="any" ng-model="mainCtrl.locationData.lat" placeholder="lat"><br>
-			<input type="number" step="any" ng-model="mainCtrl.locationData.lng" placeholder="lng"><br>
+			<input type="text" ng-model="mainCtrl.locationData.name" placeholder="Name"><br>
+			<input type="number" step="any" ng-model="mainCtrl.locationData.lat" placeholder="Lat"><br>
+			<input type="number" step="any" ng-model="mainCtrl.locationData.lng" placeholder="Lng"><br>
 			<button>SUBMIT</button>
 		</form>
 	</div>
 			
-	<span>Seach for locations</span><br>
+	<span class="username">Seach for locations</span><br>
 	<input type="text" ng-model="searchBox" placeholder="Location Name">
 
 

@@ -2,6 +2,6 @@
 
 			<h3>All Users</h3>
 			<div ng-repeat="user in mainCtrl.userList">
-			<p>{{user.name}}</p>
+			<p class="username">{{user.name}}</p>
 			<p ng-repeat="locations1 in user.locations">{{locations1.name}}</br><button ng-click="mainCtrl.deleteLocation(locations1)" ng-if="user.name == mainCtrl.user.name">delete</button></p></br>	
 		</div>
