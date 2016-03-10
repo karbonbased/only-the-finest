@@ -1,6 +1,6 @@
 <html ng-app="finestApp">
 <head>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">.
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title></title>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.js"></script>
@@ -16,22 +16,14 @@
 
 </head>
 <body ng-controller="MainController as mainCtrl">
-<!-- <header>
-	<nav class="bar">
-		<a href="#">FINEST LOGO</a>
-		<a href="#addUserForm">THIS ROUTE</a>
-		<a href="#">LOCATIONS</a>
-		<a ng-click=mainCtrl.logout()>LOGOUT</a>
-	</nav>
-</header> -->
-<header>
-	<nav class="bar">
-		<a href="/">FINEST LOGO</a>
-		<a href="/users">USERS</a>
-		<a href="/locations">LOCATIONS</a>
-		<a ng-click=mainCtrl.logout() ng-if="mainCtrl.isLoggedIn"> {{ mainCtrl.user.name }} LOGOUT</a>
-	</nav>
-</header>
+	<header>
+		<nav class="bar">
+			<a href="/">FINEST LOGO</a>
+			<a href="/allusers">USERS</a>
+			<a href="/alllocations">LOCATIONS</a>
+			<a ng-click="mainCtrl.logout()" ng-if="mainCtrl.isLoggedIn"> {{ mainCtrl.user.name }} LOGOUT</a>
+		</nav>
+	</header>
 
 	<div ng-view></div>
 	<div id="top-elements">
@@ -58,39 +50,24 @@
 			</div>
 		</div>
 	</div> <!--closes signup and header div -->
-		<div id="main-area"> 
-	<section id="left-main">
-		<div id="left-main-content">
-			<h3>All Users</h3>
-
-		<div ng-repeat="user in mainCtrl.userList">
-			<p>{{user.name}}</p>
-			<p>{{user._id}}</p>	
-			<p ng-repeat="locations1 in user.locations">{{locations1.name}}</br>{{locations1._id}}</br><button ng-if="mainCtrl.isLoggedIn"ng-click="mainCtrl.deleteLocation(locations1)">delete</button></p></br>	
-		</div>
-
-		<h3>All Locations</h3>
-		<div ng-repeat="location in mainCtrl.locationList">
-			<p>{{location.name}}</p>
-		</div>
+		
+	<div id="main-area"> 
+		<section id="left-main">
+	 	<!-- userPartial -->
+    <div id="left-main-content" ng-include="'partials/userPartial.html'">
 
 
-		<div ng-if="mainCtrl.isLoggedIn" id="addLocationForm">
+	 	<!-- locationPartial -->
+		<div id="left-main-content" ng-include="'partials/locationPartial.html'">
 
-			<h3>New Location</h3>
-			<form ng-submit="mainCtrl.addLocationForm()">
-				<input type="text" ng-model="mainCtrl.locationData.name" placeholder="name"><br>
-				<input type="number" step="any" ng-model="mainCtrl.locationData.lat" placeholder="lat"><br>
-				<input type="number" step="any" ng-model="mainCtrl.locationData.lng" placeholder="lng"><br>
-				<input type="submit">
-			</form>
-		</div>
-	</div>
-	</section>
+	
+			
+	</div> <!-- ends left-main-content div -->
+	</section> <!-- ends left-main section -->
 	
 	<section id="right-main">
 		<div ng-controller="MapController as mapCtrl">
-			 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+		 	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 			<div id="map-canvas">{{mapCtrl.map()}}</div>
 		</div>
 	</section>

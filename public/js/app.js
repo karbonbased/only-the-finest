@@ -43,6 +43,7 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 					console.log(err);
 				}
 			});
+
 	};
 
 
@@ -176,24 +177,19 @@ app.controller('MapController', ['$scope', function($scope) {
 }]);
 
 //PARTIAL ROUTES//
-/*myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode({ enabled: true }); // tell angular to use push state
-    $routeProvider.when('/url1', { //when http://localhost:3000/url1
-        templateUrl: 'partials/partial1.html', // render http://localhost:3000/partials/partial1.html
-        controller: 'Ctrl1', // attach controller Ctrl1
-        controllerAs: 'ctrl' // alias for Ctrl1 (like ng-controller="Ctrl1 as ctrl")
+    $routeProvider.when('/allusers', { //when http://localhost:3000/url1
+        templateUrl: 'partials/userPartial.html', // render http://localhost:3000/partials/userPartial.html
+        controller: 'MainController', // attach MainController 
+        controllerAs: '/allusers' // alias for MainController 
     }).
-    when('/url2', {
-        templateUrl: 'partials/partial2.html',
-        controller: 'Ctrl1',
-        controllerAs: 'ctrl'
-    }).
-    when('/url3/:id', {
-        templateUrl: 'partials/partial3.html',
-        controller: 'Ctrl3',
-        controllerAs: 'ctrl'
-    });
-}]);*/
+    when('/alllocations', {
+        templateUrl: 'partials/locationPartial.html',
+        controller: 'MainController',
+        controllerAs: '/alllocations'
+    })
+}]);
 
 
 
