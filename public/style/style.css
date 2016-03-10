@@ -18,11 +18,19 @@
     src: url('../fonts/Neutraface2-Thin.ttf');
 }
 
+html {
+    min-height: 100%;
+    background:
+        radial-gradient(transparent, black),
+        url("../img/jdore.jpg");
+    background-size: contain;
+}
+
 body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background-color: rgb(42,42,42);
+	/*background-color: rgb(42,42,42);*/
 	color: white;
 	font-family: NeutraLight, sans-serif;
 	font-size: 0.8em;
