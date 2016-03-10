@@ -18,36 +18,32 @@
 <body ng-controller="MainController as mainCtrl">
 	<header>
 		<nav class="bar">
-			<a href="/">HOME</a>
-			<a href="/allusers">USERS</a>
-			<a href="/alllocations">LOCATIONS</a>
+			<a ng-if="mainCtrl.isLoggedIn">Hello {{ mainCtrl.user.name }} </a>
+			<a id="logo"><img src="./img/well-spent-logo-sm.png"></a>
 			<a ng-click="mainCtrl.logout()" ng-if="mainCtrl.isLoggedIn"> {{ mainCtrl.user.name }} LOGOUT</a>
 		</nav>
 	</header>
 
-	<div ng-view></div>
 	<div id="top-elements">
-		<div class="top-content" id="logo"><img src="./img/well-spent-logo-sm.png"></div>
 		
-		<span ng-if="mainCtrl.isLoggedIn">HELLO {{ mainCtrl.user.name }} </span>
 		<div ng-if="!mainCtrl.isLoggedIn" id="addUserForm">
 			<div class="top-content" id="signup">
 				<h3>Sign Up</h3>
 				<form ng-controller="SignupController as signup" ng-submit="signup.signup()">
-					<input type="text" ng-model="signup.userInfo.name" placeholder="name"><br>
+					<input type="text" ng-model="signup.userInfo.name" placeholder="name" id="first-input"><br>
 					<input type="text" ng-model="signup.userInfo.email" placeholder="email"><br>
 					<input type="text" ng-model="signup.userInfo.gender" placeholder="gender"><br>
 					<input type="text" ng-model="signup.userInfo.password" placeholder="password"><br>
-					<input type="submit">
+					<button>SUBMIT</button>
 				</form>
 			</div>
 
 			<div class="top-content" id="login">
 			<h3>Login</h3>
 				<form ng-controller="LoginController as login" ng-submit="login.login()">
-					<input type="text" ng-model="login.userInfo.email" placeholder="email"><br>
+					<input type="text" ng-model="login.userInfo.email" placeholder="email" id="first-input"><br>
 					<input type="text" ng-model="login.userInfo.password" placeholder="password"><br>
-					<input type="submit">
+					<button>SUBMIT</button>
 				</form>
 			</div>
 		</div>
@@ -65,6 +61,7 @@
 	<section id="center-main">
 		<!-- locationPartial -->
 		<div id="center-main-content" ng-include="'partials/locationPartial.html'">
+		<!-- <div ng-view id="bottom-content"></div> -->
 	</section>
 	
 	<section id="right-main">
@@ -74,6 +71,8 @@
 		</div>
 	</section>
 </div>	
+
+
 
 </body>
 </html>

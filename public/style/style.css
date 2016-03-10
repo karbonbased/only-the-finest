@@ -33,7 +33,37 @@ body {
 	/*background-color: rgb(42,42,42);*/
 	color: white;
 	font-family: NeutraLight, sans-serif;
-	font-size: 0.8em;
+	font-size: 1em;
+}
+
+button {
+	background-color: black;
+	color: white;
+	border-radius: 2px;
+	border: 1px solid #575757;
+	margin-top: 0.8em;
+	text-transform: uppercase;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+button:hover {
+	background-color: white;
+	color: black;
+	border: 1px solid #575757;
+}
+
+input {
+	background-color: black;
+	color: white;
+	border-radius: 2px;
+	border: 1px solid #575757;
+	margin-top: 0.8em;
+	height: 20px;
+}
+
+#first-input {
+	margin-top: 0;
 }
 
 #top-elements {
@@ -46,11 +76,17 @@ body {
 
 #logo {
 	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .top-content {
 	/*flex: 1 1 auto;*/
 	/*align-content: none;*/
+}
+
+#greeting {
+	margin-top: 28px;
+	font-size: 1.35em;
 }
 
 .bar {
@@ -62,7 +98,6 @@ body {
 	flex-wrap: nowrap;
 	background-color: black;
 	width: 100%;
-	padding: 20px;
 	border-bottom: 1px solid rgba(255,255,255,0.5);
 	border-top: 1px solid rgba(255,255,255,0.5);
 }
@@ -108,15 +143,17 @@ body {
  #main-area {
  	display: flex;
  	flex-direction: row;
+ 	margin-top: 2.7em;
  }
 
 #left-main {
-   width: 14em;
-  	border: 1px solid rgba(255,255,255,0.9);
-   display: flex;
-   flex-direction: column;
-   height: 95em;
-   margin-left: 1em
+  width: 14em;
+  background-color: black;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin-left: 1em;
+  overflow: auto;
 }
 
 #left-main-content {
@@ -125,11 +162,12 @@ body {
 
 #center-main {
    width: 17.5em;
-  	border: 1px solid rgba(255,255,255,0.9);
+  	background-color: black;
    display: flex;
    flex-direction: column;
-   height: 95em;
-   margin-left: 1em
+   height: 100%;
+   margin-left: 1em;
+   overflow: auto;
 }
 
 #center-main-content {
@@ -153,7 +191,8 @@ body {
       }
 
       #pac-input {
-        background-color: #fff;
+        background-color: black;
+        color: white;
         font-family: Roboto;
         font-size: 15px;
         font-weight: 300;
@@ -164,7 +203,7 @@ body {
       }
 
       #pac-input:focus {
-        border-color: #4d90fe;
+        border-color: white;
       }
 
       .pac-container {
@@ -278,7 +317,7 @@ body {
 	.bar {
 	margin: 0 auto;
 	display: flex;
-	align-items: baseline;
+	align-items: center;
 	flex-direction: column;
 	justify-content: center;
 	flex-wrap: nowrap;
@@ -289,15 +328,16 @@ body {
 	border-top: 1px solid rgba(255,255,255,0.5);
 	}
 
+#logo {
+	width:116px;
+	height:19px;
+	margin-right: 10px
+}
+
 #addUserForm {
 	display: flex;
 	flex-direction: column;
 	/*padding: 2em;*/
-}
-
-.top-content {
-	/*flex: 1 1 auto;*/
-	padding-left: 2em;
 }
 
 
