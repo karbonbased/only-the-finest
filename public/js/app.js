@@ -47,23 +47,38 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 	};
 
 
-	 this.deleteLocation = function(location1){
-	 	console.log('++++++++++++++++++++++++++++++')
-
-	 	this.locationId = location1._id;
-	 	//console.log(this.locationId) // location ID
-	 	console.log(controller.locationId) //location ID
-
-		//console.log(this.location)
+	this.addLocation = function(location){
+		// var abcd = null;
+		// this.abcd = location;
 
 		$http({
+			method: "PUT", 
+			url: "/users/locationAdd/" + controller.user._id, 
+			data: location
+		})
+		.then(
+			function(response) {
+				controller.getUsers();
+				}, 
+				function() {
+					console.log(err);
+				}
+			);
+	};
+
+
+	 this.deleteLocation = function(location1){
+	 	console.log('delete clicked')
+	 	this.locationId = location1._id;
+	 	console.log(location1)
+		$http({
 			method: "DELETE",
-			url:'/users/' + controller.locationId
+			url:'/users/' + controller.locationId,
+			data: location1
 		})
 		.then (
 			function(response) {
 					controller.getUsers();
-					console.log('RESPONSE FROM THE SERVER IN THE CLIENT: ', response.data);
 			}, 
 			function(err){
 				console.log(err)
