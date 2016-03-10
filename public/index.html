@@ -9,29 +9,21 @@
 	<script type="text/javascript" src="js/app.js"></script>
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 	<script type="text/javascript" src="js/maps.js"></script>	
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmwtfSv21F2H9uJga-oj5UeCbC-bUsaS0&libraries=places&callback=initialize" async defer></script>
-	<script type="text/javascript" src="https://rawgit.com/angular-ui/angular-google-maps/2.3.2/dist/angular-google-maps.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmwtfSv21F2H9uJga-oj5UeCbC-bUsaS0&libraries=places&minprice=4&callback=initialize" async defer></script>
+	<script type="text/javascript" src="js/angular-google-maps.min.js"></script>
 
 	<base href="/">
 
 </head>
 <body ng-controller="MainController as mainCtrl">
-<!-- <header>
-	<nav class="bar">
-		<a href="#">FINEST LOGO</a>
-		<a href="#addUserForm">THIS ROUTE</a>
-		<a href="#">LOCATIONS</a>
-		<a ng-click=mainCtrl.logout()>LOGOUT</a>
-	</nav>
-</header> -->
-<header>
-	<nav class="bar">
-		<a href="/">FINEST LOGO</a>
-		<a href="/users">USERS</a>
-		<a href="/locations">LOCATIONS</a>
-		<a ng-click='mainCtrl.logout()' ng-if="mainCtrl.isLoggedIn"> {{ mainCtrl.user.name }} LOGOUT</a>
-	</nav>
-</header>
+	<header>
+		<nav class="bar">
+			<a href="/">FINEST LOGO</a>
+			<a href="/allusers">USERS</a>
+			<a href="/alllocations">LOCATIONS</a>
+			<a ng-click="mainCtrl.logout()" ng-if="mainCtrl.isLoggedIn"> {{ mainCtrl.user.name }} LOGOUT</a>
+		</nav>
+	</header>
 
 	<div ng-view></div>
 	<div id="top-elements">
@@ -58,46 +50,25 @@
 			</div>
 		</div>
 	</div> <!--closes signup and header div -->
-		<div id="main-area"> 
-	<section id="left-main">
-		<div id="left-main-content">
-			<h3>All Users</h3>
-			<!-- <div>{{mainCtrl.user.name}}</div> -->
-			<!-- <div>{{mainCtrl.isLoggedIn}}</div> -->
-		<div ng-repeat="user in mainCtrl.userList">
-			<p>{{user.name}}</p>
-			<p ng-repeat="locations1 in user.locations">{{locations1.name}}</br><button ng-click="mainCtrl.deleteLocation(locations1)" ng-if="user.name == mainCtrl.user.name">delete</button></p></br>			
-		</div>
+		
+	<div id="main-area"> 
+		<section id="left-main">
+	 	<!-- userPartial -->
+  			<div id="left-main-content" ng-include="'partials/userPartial.html'">
 
-		<h3>All Locations</h3>
-		<div>
-			<p ng-repeat="location in mainCtrl.locationList" ng-click="mainCtrl.addLocation(location)">{{location.name}}</p>
-		</div>
-
-
-		<div ng-if="mainCtrl.isLoggedIn" id="addLocationForm">
-
-			<h3>New Location</h3>
-			<form ng-submit="mainCtrl.addLocationForm()">
-				<input type="text" ng-model="mainCtrl.locationData.name" placeholder="name"><br>
-				<input type="number" step="any" ng-model="mainCtrl.locationData.lat" placeholder="lat"><br>
-				<input type="number" step="any" ng-model="mainCtrl.locationData.lng" placeholder="lng"><br>
-				<input type="submit">
-			</form>
-		</div>
-	</div>
-	</section>
+	 	<!-- locationPartial -->
+			<div id="left-main-content" ng-include="'partials/locationPartial.html'">
+	
+	</div> <!-- ends left-main-content div -->
+	</section> <!-- ends left-main section -->
 	
 	<section id="right-main">
 		<div ng-controller="MapController as mapCtrl">
-			 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
+		 	<input id="pac-input" class="controls" type="text" placeholder="Search Box">
 			<div id="map-canvas">{{mapCtrl.map()}}</div>
 		</div>
 	</section>
-</div>
-
-
-	
+</div>	
 
 </body>
 </html>
