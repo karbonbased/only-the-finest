@@ -161,6 +161,10 @@ body {
       }
     /*END SEARCH BAR*/
 
+/*INFO WINDOWS*/
+#content {
+	color: black
+}
 
 @media(max-width: 1000px ) {
 #map-canvas {

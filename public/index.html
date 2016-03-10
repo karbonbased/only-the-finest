@@ -9,7 +9,7 @@
 	<script type="text/javascript" src="js/app.js"></script>
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 	<script type="text/javascript" src="js/maps.js"></script>	
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmwtfSv21F2H9uJga-oj5UeCbC-bUsaS0&libraries=places&callback=initialize" async defer></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCmwtfSv21F2H9uJga-oj5UeCbC-bUsaS0&libraries=places&minprice=4&callback=initialize" async defer></script>
 	<script type="text/javascript" src="js/angular-google-maps.min.js"></script>
 
 	<base href="/">
@@ -91,6 +91,7 @@
 	
 	<section id="right-main">
 		<div ng-controller="MapController as mapCtrl">
+			<button ng-click=mapCtrl.sushi()>Sushi</button>
 			 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
 			<div id="map-canvas">{{mapCtrl.map()}}</div>
 		</div>
