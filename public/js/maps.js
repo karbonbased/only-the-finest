@@ -116,7 +116,7 @@ var addMarkers = function(map) {
 			for (var i=0; i < result.length; i++) {
 				marker = new google.maps.Marker ({
 				    map: map,
-				    icon: '../img/money_bag_black-sm.png',
+				    icon: '../img/money_bag_sm.png',
 				    position: { lat: result[i].lat, lng: result[i].lng },
 				    title: result[i].name
 				});
