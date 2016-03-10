@@ -18,7 +18,7 @@
 <body ng-controller="MainController as mainCtrl">
 	<header>
 		<nav class="bar">
-			<a href="/">FINEST LOGO</a>
+			<a href="/">HOME</a>
 			<a href="/allusers">USERS</a>
 			<a href="/alllocations">LOCATIONS</a>
 			<a ng-click="mainCtrl.logout()" ng-if="mainCtrl.isLoggedIn"> {{ mainCtrl.user.name }} LOGOUT</a>
@@ -27,7 +27,9 @@
 
 	<div ng-view></div>
 	<div id="top-elements">
-		<h1 class="top-content" id="greeting">Finest Things App</h1><span ng-if="mainCtrl.isLoggedIn">HELLO {{ mainCtrl.user.name }} </span>
+		<div class="top-content" id="logo"><img src="./img/well-spent-logo-sm.png"></div>
+		
+		<span ng-if="mainCtrl.isLoggedIn">HELLO {{ mainCtrl.user.name }} </span>
 		<div ng-if="!mainCtrl.isLoggedIn" id="addUserForm">
 			<div class="top-content" id="signup">
 				<h3>Sign Up</h3>
@@ -56,11 +58,14 @@
 	 	<!-- userPartial -->
   			<div id="left-main-content" ng-include="'partials/userPartial.html'">
 
-	 	<!-- locationPartial -->
-			<div id="left-main-content" ng-include="'partials/locationPartial.html'">
-	
+	 	
 	</div> <!-- ends left-main-content div -->
 	</section> <!-- ends left-main section -->
+
+	<section id="center-main">
+		<!-- locationPartial -->
+		<div id="center-main-content" ng-include="'partials/locationPartial.html'">
+	</section>
 	
 	<section id="right-main">
 		<div ng-controller="MapController as mapCtrl">

@@ -6,7 +6,7 @@ var infowindow = null;
 function initialize() {
 
       // Create an array of styles.
-    var styles = [ { "featureType": "landscape", "stylers": [ { "color": "#B2B2B2" } ] },{ "featureType": "poi.park", "elementType": "geometry", "stylers": [ { "color": "#B2B2B2" } ] },{ "featureType": "administrative", "elementType": "labels", "stylers": [ { "color": "#575757" }, { "visibility": "simplified" } ] },{ "featureType": "road", "elementType": "labels.text", "stylers": [ { "visibility": "simplified" }, { "weight": 8 }, { "color": "#575757" } ] },{ "featureType": "transit", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] },{ "featureType": "road", "elementType": "geometry", "stylers": [ { "color": "#ffffff" } ] },{ },{ "featureType": "poi.park", "elementType": "labels.text", "stylers": [ { "color": "#575757" }, { "visibility": "simplified" } ] },{ "featureType": "poi", "elementType": "labels.text", "stylers": [ { "visibility": "simplified" }, { "color": "#575757" } ] },{ "featureType": "water", "elementType": "geometry", "stylers": [ { "color": "#808080" } ] },{ "featureType": "poi.park", "elementType": "geometry" }, {"featureType": "water", "elementType": "labels", "stylers": [{ "visibility": "simplified" }, { "color": "#575757" }]} ]
+    var styles = [ { "featureType": "landscape", "stylers": [ { "color": "#B2B2B2" } ] },{ "featureType": "poi.park", "elementType": "geometry", "stylers": [ { "color": "#B2B2B2" } ] },{ "featureType": "administrative", "elementType": "labels", "stylers": [ { "color": "#575757" }, { "visibility": "simplified" } ] },{ "featureType": "road", "elementType": "labels.text", "stylers": [ { "visibility": "simplified" }, { "weight": 8 }, { "color": "#575757" } ] },{ "featureType": "transit", "elementType": "labels.icon", "stylers": [ { "visibility": "off" } ] },{ "featureType": "road", "elementType": "geometry", "stylers": [ { "color": "#ffffff" } ] },{ },{ "featureType": "poi.park", "elementType": "labels.text", "stylers": [ { "color": "#575757" }, { "visibility": "simplified" } ] },{ "featureType": "poi", "elementType": "labels.text", "stylers": [ { "visibility": "simplified" }, { "color": "#575757" } ] },{ "featureType": "water", "elementType": "geometry", "stylers": [ { "color": "#808080" } ] },{ "featureType": "poi.park", "elementType": "geometry" }, {"featureType": "water", "elementType": "labels", "stylers": [{ "visibility": "simplified" }, { "color": "#575757" }]},  {"featureType": "road", "elementType": "labels.icon", "stylers": [{ "saturation": -100 }]} ]
 
     // Create a new StyledMapType object, passing it the array of styles,
     // as well as the name to be displayed on the map type control.
@@ -116,7 +116,7 @@ var addMarkers = function(map) {
 			for (var i=0; i < result.length; i++) {
 				marker = new google.maps.Marker ({
 				    map: map,
-				    icon: '../img/money_bag_marker.png',
+				    icon: '../img/money_bag_sm.png',
 				    position: { lat: result[i].lat, lng: result[i].lng },
 				    title: result[i].name
 				});

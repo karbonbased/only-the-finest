@@ -18,11 +18,19 @@
     src: url('../fonts/Neutraface2-Thin.ttf');
 }
 
+html {
+    min-height: 100%;
+    background:
+        radial-gradient(transparent, black),
+        url("../img/jdore.jpg");
+    background-size: contain;
+}
+
 body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	background-color: rgb(42,42,42);
+	/*background-color: rgb(42,42,42);*/
 	color: white;
 	font-family: NeutraLight, sans-serif;
 	font-size: 0.8em;
@@ -33,7 +41,11 @@ body {
 	flex-direction: row;
 	flex-wrap: nowrap;
 	justify-content: space-around;
-	align-items: baseline;
+	align-items: flex-start;
+}
+
+#logo {
+	margin-top: 20px;
 }
 
 .top-content {
@@ -76,10 +88,11 @@ body {
 
 #map-canvas {
 	height: 630px; 
-	width: 810px;
+	width: 780px;
 	display: inline-block;
 	margin-top: 5px;
 	border-radius: 5px;
+	border: 1px solid white;
 }
 
 #addUserForm {
@@ -98,8 +111,8 @@ body {
  }
 
 #left-main {
-   width: 12em;
-  	border: 1px solid rgba(202,188,255,0.9);
+   width: 14em;
+  	border: 1px solid rgba(255,255,255,0.9);
    display: flex;
    flex-direction: column;
    height: 95em;
@@ -110,13 +123,26 @@ body {
 	padding-left: 30px;
 }
 
+#center-main {
+   width: 17.5em;
+  	border: 1px solid rgba(255,255,255,0.9);
+   display: flex;
+   flex-direction: column;
+   height: 95em;
+   margin-left: 1em
+}
+
+#center-main-content {
+	padding-left: 25px;
+}
+
 #right-main {
 	margin-left: 1.5em;
 }
 
 /*GOOGLE PLACES SEARCH BAR*/
  .controls {
-        margin-top: 10px;
+        /*margin-top: 10px;*/
         border: 1px solid transparent;
         border-radius: 2px 0 0 2px;
         box-sizing: border-box;
@@ -169,9 +195,18 @@ body {
 @media(max-width: 1000px ) {
 #map-canvas {
 	height: 630px; 
-	width: 700px;
+	width: 650px;
 	display: inline-block;
-	margin-top: 5px;
+	border-radius: 5px;
+	border: 1px solid white;
+}
+}
+
+@media(max-width: 950px ) {
+#map-canvas {
+	height: 630px; 
+	width: 600px;
+	display: inline-block;
 	border-radius: 5px;
 	border: 1px solid white;
 }
@@ -180,9 +215,18 @@ body {
 @media(max-width: 900px ) {
 #map-canvas {
 	height: 630px; 
-	width: 600px;
+	width: 550px;
 	display: inline-block;
-	margin-top: 5px;
+	border-radius: 5px;
+	border: 1px solid white;
+}
+}
+
+@media(max-width: 850px ) {
+#map-canvas {
+	height: 630px; 
+	width: 500px;
+	display: inline-block;
 	border-radius: 5px;
 	border: 1px solid white;
 }
@@ -192,9 +236,18 @@ body {
 @media(max-width: 800px ) {
 #map-canvas {
 	height: 630px; 
-	width: 500px;
+	width: 450px;
 	display: inline-block;
-	margin-top: 5px;
+	border-radius: 5px;
+	border: 1px solid white;
+}
+}
+
+@media(max-width: 750px ) {
+#map-canvas {
+	height: 630px; 
+	width: 425px;
+	display: inline-block;
 	border-radius: 5px;
 	border: 1px solid white;
 }
@@ -203,9 +256,8 @@ body {
 @media(max-width: 700px ) {
 #map-canvas {
 	height: 630px; 
-	width: 450px;
+	width: 400px;
 	display: inline-block;
-	margin-top: 5px;
 	border-radius: 5px;
 	border: 1px solid white;
 }
@@ -258,7 +310,6 @@ body {
 	height: 350px; 
 	width: 220px;
 	display: inline-block;
-	margin-top: 5px;
 	border-radius: 5px;
 	border: 1px solid white;
 }

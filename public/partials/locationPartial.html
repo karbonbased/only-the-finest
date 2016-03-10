@@ -5,7 +5,7 @@
 	<input type="text" ng-model="searchBox" placeholder="Location Name">
 
 
-	<div ng-repeat="location in mainCtrl.locationList | filter:searchBox" ng-click="mainCtrl.getLocations(location)">
+	<div ng-repeat="location in mainCtrl.locationList | filter:searchBox" ng-click="mainCtrl.addLocation(location)">
 
 		<p>{{location.name}}</p>
 			</div>
