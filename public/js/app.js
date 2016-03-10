@@ -47,10 +47,8 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 
 
 	this.addLocation = function(location){
-		var abcd = null;
-		this.abcd = location;
-		//console.log(this.abcd) // location object 
-		console.log(location)
+		// var abcd = null;
+		// this.abcd = location;
 
 		$http({
 			method: "PUT", 
@@ -60,10 +58,6 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		.then(
 			function(response) {
 				controller.getUsers();
-				//console.log('im the response ' + response)
-					// console.log('sup fools im in the console')
-					// console.log(location)
-					// console.log(response.data)
 				}, 
 				function() {
 					console.log(err);
@@ -93,17 +87,17 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
     // } 
 
 	 this.deleteLocation = function(location1){
-
+	 	console.log('delete clicked')
 	 	this.locationId = location1._id;
-
+	 	console.log(location1)
 		$http({
 			method: "DELETE",
-			url:'/users/' + controller.locationId
+			url:'/users/' + controller.locationId,
+			data: location1
 		})
 		.then (
 			function(response) {
 					controller.getUsers();
-
 			}, 
 			function(err){
 				console.log(err)
