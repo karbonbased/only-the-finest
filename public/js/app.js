@@ -65,26 +65,6 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 			);
 	};
 
-	   //      var country;
-    //     this.country = region;
-    //     console.log(this.country)
-
-
-
-    //     $http.get('/wbinfo/byName/' + this.country).then(
-    //     //success
-    //     function(response){
-    //         controller.regData = response.data;
-    //         console.log(controller.regData)
-
-    //     //controller.regions = response.data;
-    //     },
-    //     //error
-    //     function(){
-    //         console.log(err);
-    //     }
-    // )
-    // } 
 
 	 this.deleteLocation = function(location1){
 	 	console.log('delete clicked')
