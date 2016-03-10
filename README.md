@@ -1,20 +1,20 @@
-#Finest Things App
-#Bougie Google
+#Well Spent
 
-
-
-www.LocationOfMyProject
-
++++++++++++++++++++++++++++++++++++++++++++++++++++
+www.well-spent.herokuapp.com
++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ##Description
 
-This is a description of the app
+This is a web app where the user has the ability to curate a list of favorite spots.  They can search and save locations as well as add other users' locations to their list.
 
 ##Tech used / Stack
-- AngularJS
-- Passport
+
 - MongoDB
 - Express
+- AngularJS
+- Node
+- Passport
 - Google Maps API
 - Google Places API
 
@@ -22,18 +22,17 @@ This is a description of the app
 
 ##Features
 
-Bullet Point 1
-Bullet Point 2
-Bullet Point 3
+- special moneybag map markers for the saved locations
+- stylized map
+- search bar in the map
+- partials to display all users / all locations
+- users can add and delete locations from their profile
+- 
 
 
 
 ##Future Implementations
 
-Bullet Point 1
-Bullet Point 2
-Bullet Point 3
-
-
-
-Feel free to add more based on your discretion as well as the thoroughness of each criteria. Remember, the readme is for other engineers and potential hiring managers to look at upon examining your project's code.
+- info box displayed on click of marker
+- refine the search to only $$$$ options
+- 
