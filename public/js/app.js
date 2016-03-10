@@ -55,14 +55,15 @@ app.controller('MainController', ['$http', '$scope', function($http, $scope){
 		$http({
 			method: "PUT", 
 			url: "/users/locationAdd/" + controller.user._id, 
-			data: this.abcd
+			data: location
 		})
 		.then(
 			function(response) {
+				controller.getUsers();
 				//console.log('im the response ' + response)
-					console.log('sup fools im in the console')
-					console.log(location)
-					console.log(response.data)
+					// console.log('sup fools im in the console')
+					// console.log(location)
+					// console.log(response.data)
 				}, 
 				function() {
 					console.log(err);

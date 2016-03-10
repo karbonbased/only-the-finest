@@ -105,7 +105,7 @@ router.put('/locationAdd/:id', function(req, res){
 	 //console.log(req)
 	User.findById(req.params.id, function(err, user){
 		console.log(user)
-	 		user.locations.push();
+	 		user.locations.push(req.body);
 	 		user.save();
 	 		res.send(user) // this comes up in postman this is response.data
 	 	})
