@@ -80,6 +80,7 @@ body {
 	display: inline-block;
 	margin-top: 5px;
 	border-radius: 5px;
+	border: 1px solid white;
 }
 
 #addUserForm {
@@ -129,7 +130,7 @@ body {
 
 /*GOOGLE PLACES SEARCH BAR*/
  .controls {
-        margin-top: 10px;
+        /*margin-top: 10px;*/
         border: 1px solid transparent;
         border-radius: 2px 0 0 2px;
         box-sizing: border-box;
@@ -184,7 +185,6 @@ body {
 	height: 630px; 
 	width: 700px;
 	display: inline-block;
-	margin-top: 5px;
 	border-radius: 5px;
 	border: 1px solid white;
 }
@@ -195,7 +195,6 @@ body {
 	height: 630px; 
 	width: 600px;
 	display: inline-block;
-	margin-top: 5px;
 	border-radius: 5px;
 	border: 1px solid white;
 }
@@ -207,7 +206,6 @@ body {
 	height: 630px; 
 	width: 500px;
 	display: inline-block;
-	margin-top: 5px;
 	border-radius: 5px;
 	border: 1px solid white;
 }
@@ -218,7 +216,6 @@ body {
 	height: 630px; 
 	width: 450px;
 	display: inline-block;
-	margin-top: 5px;
 	border-radius: 5px;
 	border: 1px solid white;
 }
@@ -271,7 +268,6 @@ body {
 	height: 350px; 
 	width: 220px;
 	display: inline-block;
-	margin-top: 5px;
 	border-radius: 5px;
 	border: 1px solid white;
 }
