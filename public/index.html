@@ -56,11 +56,14 @@
 	 	<!-- userPartial -->
   			<div id="left-main-content" ng-include="'partials/userPartial.html'">
 
-	 	<!-- locationPartial -->
-			<div id="left-main-content" ng-include="'partials/locationPartial.html'">
-	
+	 	
 	</div> <!-- ends left-main-content div -->
 	</section> <!-- ends left-main section -->
+
+	<section id="center-main">
+		<!-- locationPartial -->
+		<div id="left-main-content" ng-include="'partials/locationPartial.html'">
+	</section>
 	
 	<section id="right-main">
 		<div ng-controller="MapController as mapCtrl">
