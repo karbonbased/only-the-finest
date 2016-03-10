@@ -174,9 +174,6 @@ app.controller('MapController', ['$scope', function($scope) {
 	this.map = function(){
 		controller.maps = initialize();
 	}
-	this.sushi = function(){
-		controller.sushi = test();
-	}
 }]);
 
 //PARTIAL ROUTES//
