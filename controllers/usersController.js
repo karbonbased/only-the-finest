@@ -125,7 +125,5 @@ router.delete('/:locationId', function(req, res){
 
 
 
-
-
 module.exports = router;
 
